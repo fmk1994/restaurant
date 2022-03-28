@@ -3,7 +3,7 @@ import Arrow from './pictures/arrow.png';
 import {useState} from 'react';
 import { withStyles } from "@mui/styles";
 import styles from './styles/GalleryStyles';
-import itemData from "./components/itemData";
+import galleryItemData from "./components/galleryItemData";
 
 
 
@@ -29,7 +29,7 @@ setIndex(index);
       </div>
       <div
     className={classes.galleryImages}>
-      {itemData.map((item, index) => (
+      {galleryItemData.map((item, index) => (
          <div id={item.img}
           className={oIndex===index? `${classes.active} ${classes.panel}`: classes.panel}
           style={{backgroundImage:`url(${item.img})`}}

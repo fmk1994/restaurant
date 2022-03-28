@@ -1,6 +1,6 @@
 import sizes from './sizes'
 
-const styles= theme =>({
+const styles ={
 AppBar:{
     "&.MuiAppBar-root":{
         backdropFilter:"blur(20px)",
@@ -50,6 +50,5 @@ cursor:"pointer",
 
 
 
-})
-
+}
 export default styles;

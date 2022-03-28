@@ -5,8 +5,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {ThemeProvider} from '@mui/material/styles';
-
-
+import Gallery from "./Gallery"
 
 ReactDOM.render(
  
@@ -14,7 +13,6 @@ ReactDOM.render(
     <BrowserRouter>
     
     <App/>
-    
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

@@ -21,12 +21,13 @@ function App(props) {
 return(
 
 <section ref={scrollRef}>
+
   <NavbarTop/>
   <Start/>
-   <AboutUs/>
-  <Gallery/>
+   <AboutUs/> 
   <Menu/>
   <OrderOnline/>
+  <Gallery/>
   <Contact/>
   </section> 
 

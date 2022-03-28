@@ -24,13 +24,13 @@ function Contact (props){
         <div className={classes.contactData}>
       <ul className={classes.openingHours}>
         <li style={{marginBottom:"1.5rem", fontWeight:800}}>Godziny otwarcia:</li>
-        <li>Poniedziałek 16-22</li>
-        <li>Wtorek 11-22</li>
-        <li>Środa 11-22</li>
-        <li>Czwartek 11-22</li>
-        <li>Piątek 11-22</li>
-        <li>Sobota 11-20</li>
-        <li>Niedziela 11-20</li>
+        <li><p>Poniedziałek</p> <p>16-22</p></li>
+        <li><p>Wtorek</p> <p>11-22</p></li>
+        <li><p>Środa</p> <p>11-22</p></li>
+        <li><p>Czwartek</p> <p>11-22</p></li>
+        <li><p>Piątek</p> <p>11-22</p></li>
+        <li><p>Sobota</p> <p>11-22</p></li>
+        <li><p>Niedziela</p> <p>11-22</p></li>
       </ul>
       <ul className={classes.adress}>
       <li>Restauracja Good Taste</li>

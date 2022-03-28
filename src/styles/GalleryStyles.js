@@ -1,7 +1,6 @@
 import Image from '../pictures/galleryBackground.png';
 import sizes from './sizes.js';
 
-
 const styles ={
  
   gallery:{
@@ -43,7 +42,6 @@ justifyContent:"center",
 alignItems:"center",
 margin:"2rem",
 marginTop:"0",
-animation:"arrowPulse 5s infinite",
 
   },
     

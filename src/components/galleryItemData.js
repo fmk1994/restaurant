@@ -7,7 +7,8 @@ import Image7 from "../pictures/pic7.jpg"
 import Image8 from "../pictures/pic8.jpg"
 import Image9 from "../pictures/pic9.jpg"
 
-const itemData = [
+
+const galleryItemData = [
   {
     img:Image2,
   title:"Pizza by Laure Noverraz @lornov"
@@ -40,7 +41,8 @@ const itemData = [
 img:Image9,
 title:"Avocado Toasts by Louis Hansel @louishansel"
 
-}
+},
+
 ];
 
-export default itemData;
+export default galleryItemData;
