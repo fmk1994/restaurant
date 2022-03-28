@@ -4,8 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {ThemeProvider} from '@mui/material/styles';
-import Gallery from "./Gallery"
 
 ReactDOM.render(
  

@@ -6,11 +6,13 @@ const aboutUsItemData = [
         name:"Team",
         img:TeamPhoto,
         title:"chef",
+        index:0
   },
     {
         name:"Place",
         img:PlacePhoto,
         title:"place",
+        index:1
   },
     
   
