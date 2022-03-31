@@ -1,8 +1,5 @@
-const styles= theme =>({
-    App:{
-        
-    }
-    })
-    
-    export default styles;
-    
+const styles = (theme) => ({
+	App: {},
+});
+
+export default styles;

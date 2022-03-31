@@ -4,11 +4,11 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import styles from './styles/StartStyles';
 import Logoicon from './pictures/ikona.png';
-
+ 
 function Start(props) {
 
   const{classes} = props;
-  const buttons = ['O nas', 'Menu', 'Galeria', 'Kontakt'];
+  const buttons = [ 'Menu', 'Gallery','About Us', 'Contact'];
     return (
   
     <Paper className={classes.mainPage} id="top">
@@ -20,20 +20,20 @@ function Start(props) {
           <Button
           key={button}
         className={classes.button}
-        sx={{color:"black"}} variant="contained"
+        variant="contained"
         >{button}</Button>
         ))}
          <Button 
          key="order_online"
         className={classes.mainButtons}
         variant="contained"
-        >Zamów Online
+        >Order Online
         </Button>
         <Button 
         key="bookTable"
         className={classes.mainButtons}
         variant="contained"
-        >Zarezerwuj stolik
+        >Reservation
         </Button>
       </div>
     </Paper>
