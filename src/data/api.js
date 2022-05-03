@@ -2,46 +2,35 @@ export const getComments = async () => {
   return [
     {
       id: "1",
-      body: "First comment",
+      body: "I had really great time there. Especially love desserts.",
       username: "Jack",
       userId: "1",
-      parentId: null,
-      createdAt: "2021-08-16T23:00:33.010+02:00",
+      createdAt: "2020-02-06T23:00:33.010+02:00",
     },
     {
       id: "2",
-      body: "Second comment",
-      username: "John",
+      body: "Best place for lunch. I love to go there with my friends.",
+      username: "Bruce",
       userId: "2",
-      parentId: null,
-      createdAt: "2021-08-16T23:00:33.010+02:00",
+      createdAt: "2021-12-16T23:00:33.010+02:00",
     },
     {
       id: "3",
-      body: "First comment first child",
-      username: "John",
-      userId: "2",
-      parentId: "1",
-      createdAt: "2021-08-16T23:00:33.010+02:00",
+      body: "I rate it 10/10. Love vegan sushi!",
+      username: "Katie",
+      userId: "3",
+      createdAt: "2022-01-24T23:00:33.010+02:00",
     },
-    {
-      id: "4",
-      body: "Second comment second child",
-      username: "John",
-      userId: "2",
-      parentId: "2",
-      createdAt: "2021-08-16T23:00:33.010+02:00",
-    },
+
   ];
 };
 
-export const createComment = async (text, parentId = null) => {
+export const createComment = async (text, username) => {
   return {
     id: Math.random().toString(36).substr(2, 9),
     body: text,
-    parentId,
     userId: "1",
-    username: "John",
+    username: username,
     createdAt: new Date().toISOString(),
   };
 };

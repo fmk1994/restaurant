@@ -4,7 +4,7 @@ export default {
       xs: "0px",
       sm: "575.98px",
       md: "767.98px",
-      lg: "991.98px",
+      lg: "973.98px",
       xl:"1199.98px",
   
     };
@@ -15,7 +15,7 @@ export default {
         xs: "0px",
         sm: "575.98px",
         md: "767.98px",
-        lg: "991.98px",
+        lg: "973.98px",
         xl:"1199.98px",
     
       };

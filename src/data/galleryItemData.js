@@ -1,11 +1,11 @@
-import Image2 from "../pictures/pic2.jpg"
-import Image3 from "../pictures/pic3.jpg"
-import Image4 from "../pictures/pic4.jpg"
-import Image5 from "../pictures/pic5.jpg"
-import Image6 from "../pictures/pic6.jpg"
-import Image7 from "../pictures/pic7.jpg"
-import Image8 from "../pictures/pic8.jpg"
-import Image9 from "../pictures/pic9.jpg"
+import Image2 from "../pictures/galleryPictures/pic2.jpg"
+import Image3 from "../pictures/galleryPictures/pic3.jpg"
+import Image4 from "../pictures/galleryPictures/pic4.jpg"
+import Image5 from "../pictures/galleryPictures/pic5.jpg"
+import Image6 from "../pictures/galleryPictures/pic6.jpg"
+import Image7 from "../pictures/galleryPictures/pic7.jpg"
+import Image8 from "../pictures/galleryPictures/pic8.jpg"
+import Image9 from "../pictures/galleryPictures/pic9.jpg"
 
 
 const galleryItemData = [

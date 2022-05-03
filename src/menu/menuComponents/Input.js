@@ -1,14 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Context } from "../../contexts/MenuContext";
+import { MenuContext } from "../../contexts/MenuContext";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { IconButton } from "@mui/material";
 
 
 export default function Input({ type, name, index }) {
-  const [items, updateItem] = useContext(Context);
+  const [items, updateItem] = useContext(MenuContext);
 const [count, setCount] = useState(0);
-
 
 
 useEffect(()=>{
@@ -33,11 +32,6 @@ const disabled = count<=0
       border: "1px solid grey",
       borderRadius: "50%",
       textAlign: "center",}}
-
-      type="text"
-      inputmode="numeric"
-      pattern="[0-9]*"
-      count={count}
 
       name={name.replace(" ", "-").toLowerCase()}
     >

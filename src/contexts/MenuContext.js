@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
-export const Context = React.createContext();
 
-export const Provider = props => {
+export const MenuContext = React.createContext();
+
+export function MenuProvider(props){
   const [items, setItems] = useState({});
 
   const updateItem = (type, index, count) => {
@@ -12,8 +13,8 @@ export const Provider = props => {
   };
 
   return (
-    <Context.Provider value={[items, updateItem]}>
+    <MenuContext.Provider value={[items, updateItem]}>
       {props.children}
-    </Context.Provider>
+    </MenuContext.Provider>
   );
 };

@@ -1,114 +1,68 @@
-import CommentForm from "./CommentForm";
-import "./commentsStyles/commentsStyles.css"
-import { withStyles } from "@mui/styles";
-import styles from './commentsStyles/CommentStyles';
-const Comment = ({
-  classes,
-  comment,
-  replies,
-  setActiveComment,
-  activeComment,
-  updateComment,
-  deleteComment,
-  addComment,
-  parentId = null,
-  currentUserId,
-}) => {
-  const isEditing =
-    activeComment &&
-    activeComment.id === comment.id &&
-    activeComment.type === "editing";
-  const isReplying =
-    activeComment &&
-    activeComment.id === comment.id &&
-    activeComment.type === "replying";
-  const fiveMinutes = 300000;
-  const timePassed = new Date() - new Date(comment.createdAt) > fiveMinutes;
-  const canDelete =
-    currentUserId === comment.userId && replies.length === 0 && !timePassed;
-  const canReply = Boolean(currentUserId);
-  const canEdit = currentUserId === comment.userId && !timePassed;
-  const replyId = parentId ? parentId : comment.id;
-  const createdAt = new Date(comment.createdAt).toLocaleDateString();
-  return (
-    <div key={comment.id} className='comments'>
-      <div className="comment-image-container">
-        <img src="/user-icon.png" />
-      </div>
-      <div className="comment-right-part">
-        <div className="comment-content">
-          <div className="comment-author">{comment.username}</div>
-          <div>{createdAt}</div>
-        </div>
-        {!isEditing && <div className="comment-text">{comment.body}</div>}
-        {isEditing && (
-          <CommentForm
-            submitLabel="Update"
-            hasCancelButton
-            initialText={comment.body}
-            handleSubmit={(text) => updateComment(text, comment.id)}
-            handleCancel={() => {
-              setActiveComment(null);
-            }}
-          />
-        )}
-        <div className="comment-actions">
-          {canReply && (
-            <div
-              className="comment-action"
-              onClick={() =>
-                setActiveComment({ id: comment.id, type: "replying" })
-              }
-            >
-              Reply
-            </div>
-          )}
-          {canEdit && (
-            <div
-              className="comment-action"
-              onClick={() =>
-                setActiveComment({ id: comment.id, type: "editing" })
-              }
-            >
-              Edit
-            </div>
-          )}
-          {canDelete && (
-            <div
-              className="comment-action"
-              onClick={() => deleteComment(comment.id)}
-            >
-              Delete
-            </div>
-          )}
-        </div>
-        {isReplying && (
-          <CommentForm
-            submitLabel="Reply"
-            handleSubmit={(text) => addComment(text, replyId)}
-          />
-        )}
-        {replies.length > 0 && (
-          <div className="replies">
-            {replies.map((reply) => (
-              <Comment
-                comment={reply}
-                key={reply.id}
-                setActiveComment={setActiveComment}
-                activeComment={activeComment}
-                updateComment={updateComment}
-                deleteComment={deleteComment}
-                addComment={addComment}
-                parentId={comment.id}
-                replies={[]}
-                currentUserId={currentUserId}
-              />
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
+import React from 'react';
+import { withStyles } from '@mui/styles';
+import styles from './styles/CommentStyles';
+import CommentForm from './CommentForm';
+import { Divider } from '@mui/material';
+import { Button } from '@mui/material';
+
+function Comment(props) {
+	const {
+		classes,
+		comment,
+		currentUserId,
+		deleteComment,
+		activeComment,
+		setActiveComment,
+		updateComment,
+	} = props;
+	const twoMinutes = 120000;
+	const timePassed = new Date() - new Date(comment.createdAt) > twoMinutes;
+	const canEdit = currentUserId === comment.userId && !timePassed;
+	const canDelete = currentUserId === comment.userId && !timePassed;
+	const createdAt = new Date(comment.createdAt).toLocaleDateString();
+	const isEditing = activeComment && activeComment.id === comment.id;
+	return (
+		<div className={classes.comment}>
+			<div className={classes.commentData}>
+			
+			<div className={classes.createdAt}>{createdAt}</div>
+			<div className={classes.author}>{comment.username}</div>
+			</div>
+			<Divider
+					sx={{ width: '50vw', bgcolor: 'brown', marginBottom: '20px' }}
+					variant='middle'
+				/>
+			{!isEditing && <div className={classes.content}>{comment.body}</div>}
+			{isEditing && (
+				<CommentForm
+					submitLabel='Update'
+					hasCancelButton
+					initialText={comment.body}
+					handleSubmit={(text) => updateComment(text, comment.id)}
+					handleCancel={() => setActiveComment(null)}
+					updateComment={updateComment}
+				/>
+			)}
+			<div className={classes.commentActions}>
+				{canEdit && (
+					<Button
+						className={classes.actionButton}
+						onClick={() => setActiveComment(comment)}
+					>
+						Edit
+					</Button>
+				)}
+				{canDelete && (
+					<Button
+						className={classes.actionButton}
+						onClick={() => deleteComment(comment.id)}
+					>
+						Delete
+					</Button>
+				)}
+			</div>
+		</div>
+	);
+}
 
 export default withStyles(styles)(Comment);

@@ -1,24 +1,32 @@
-import React, { useContext } from "react";
-import { Context } from "../../contexts/MenuContext";
+import React, { useContext, useEffect} from "react";
+
 import data from "../data";
 import { withStyles } from "@mui/styles";
 import styles from '../menuStyles/TotalStyles';
+import { MenuContext } from "../../contexts/MenuContext";
 
 function Total(props) {
   const {classes} = props;
-  const [items] = useContext(Context);
+const [items] = useContext(MenuContext);
 
   const totalPrice = Object.keys(items).reduce((acc, curr) => {
     const [group, item] = curr.split("-");
-    const amount = items[curr] * data[group][item].price;
-    return acc + amount;
-  }, 0);
 
+    const amount = items[curr] * data[group][item].price;
+
+    return acc + amount;
+    
+  }, 0);
+console.log(totalPrice)
+;
   return (
+    <>
     <div className={classes.Total}>
       <span className={classes.TotalTitle}>Total:</span>
       <span className={classes.TotalPrice}>${totalPrice}</span>
     </div>
+
+</>
   );
 }
 

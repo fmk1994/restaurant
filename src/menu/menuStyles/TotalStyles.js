@@ -3,13 +3,13 @@ import sizes from "../../styles/sizes";
 const styles ={
 Total:{
     gridColumn: "1 / 3",
-	marginTop: "2.5rem",
+	marginTop: "0.5rem",
 	padding: "0.75rem 0 1.25rem",
 	display: "flex",
 	justifyContent: "space-between",
 	alignItems: "flex-end",
 	position: "sticky",
-	bottom: "0",
+	bottom: "50px",
 	color: "black",
 	backgroundColor: "white",
 	borderTop: "1px solid black",

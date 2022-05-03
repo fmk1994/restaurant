@@ -2,40 +2,31 @@ import Image from '../pictures/pic1.png';
 import sizes from './sizes.js';
 const styles = (theme) => ({
 	mainPage: {
+		display:"flex",
+		justifyContent:"center",
+		flexDirection: 'column',
 		height: '100vh',
-		width: '100vw',
+		width: '98vw',
 		backgroundRepeat: 'no-repeat',
 		backgroundImage: `url(${Image})`,
 		backgroundSize: 'cover',
 		margin: 0,
 		padding: 0,
-		display: 'flex',
-		flexDirection: 'column',
 		boxShadow: 'none',
-		'& .MuiPaper-root': {
-			backgroundColor: 'rgb(214, 218, 201)',
-		},
 	},
 
 	logoArea: {
-		marginTop: '80px',
 		display: 'flex',
 		justifyContent: 'center',
-		alignItems: 'center',
+		transform: "scale(0.6)",
 		width: '100%',
-		[sizes.down('sm')]: {
-			width: '0%',
-		},
 	},
 	logo: {
 		borderRadius: '50%',
-		transform: "scale(0.7)",
 		[sizes.down('md')]: {
-			transform: 'scale(0.5)',
+			transform: 'scale(0.8)',
 		},
-		[sizes.down('sm')]: {
-			display: 'none',
-		},
+
 	},
 
 	buttonsArea: {
@@ -45,47 +36,18 @@ const styles = (theme) => ({
 		color: 'white',
 		flexDirection: 'column',
 		alignItems: 'center',
-		justifyContent: 'center',
-		[sizes.down('md')]: {
-			width: '100%',
-		},
-	},
-	button: {
-		'&.MuiButton-root': {
-			margin: '20px',
-			backgroundColor: 'transparent',
-			backdropFilter: 'blur(10px) brightness(60%)',
+		marginBottom:"100px"
 
-			color: 'white',
-			width: '300px',
-			height: '80px',
-			fontSize: '20px',
-			'&:hover': {
-				transform: 'scale(1.15)',
-				backgroundColor: 'transparent',
-			},
-			[sizes.up('sm')]: {
-				display: 'none',
-			},
-			[sizes.down('sm')]: {
-				display: 'block',
-			},
-		},
 	},
+	
 	mainButtons: {
 		'&.MuiButton-root': {
 			margin: '20px',
-			backgroundColor: 'transparent',
 			backdropFilter: 'blur(10px) brightness(60%)',
-
 			color: 'white',
 			width: '300px',
 			height: '80px',
 			fontSize: '20px',
-			'&:hover': {
-				transform: 'scale(1.15)',
-				backgroundColor: 'transparent',
-			},
 			[sizes.down('md')]: {
 				margin: '20px',
 			},

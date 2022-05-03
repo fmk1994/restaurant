@@ -1,25 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
-import App from "./App";
+import App from "./mainComponents/App";
 import reportWebVitals from "./reportWebVitals";
-import AboutUs from "./AboutUs";
-import NavbarTop from "./NavbarTop";
-import Gallery from "./Gallery";
-import Contact from "./Contact";
-import Start from "./Start";
-import OrderOnline from "./OrderOnline";
 
 
 
 
+localStorage.clear();
 
 ReactDOM.render(
 	<React.StrictMode>
-<BrowserRouter>
+
 <App/>
-			</BrowserRouter>
+	
 	</React.StrictMode>,
 	document.getElementById('root')
 );

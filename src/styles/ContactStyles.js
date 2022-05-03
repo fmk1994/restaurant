@@ -1,96 +1,129 @@
-import Image from '../pictures/galleryBackground.png';
 
 const styles = (theme) => ({
 	contact: {
-		backgroundImage: `url(${Image})`,
-		display: 'flex',
-		height: '100vh',
-		width: '100vw',
-		justifyContent: 'space-between',
-		alignItems: 'end',
-		fontFamily: 'Roboto',
-	},
-	textArea: {
-		width: '50%',
-		height: '92vh',
+		overflow: 'scroll',
 		display: 'flex',
 		flexDirection: 'column',
-	},
-	openingHours: {
-		height: '350px',
-		width: '350px',
 		alignItems: 'center',
-		listStyleType: 'none',
-		fontSize: '1.5rem',
-		border: '2px solid black',
-		borderRadius: '10px',
-		padding: '1rem',
-		margin: '2rem',
+		width: '80vw',
+		paddingTop:"75px",
+			[theme.breakpoints.down('xxl')]: {
+				width: '100vw',
+				margin: 0,
+				
+			},
+		
+	},
+	contentWrapper: {
+		display: 'grid',
+		gridTemplateColumns: '1fr 1fr',
+		gridTemplateRows: '1fr 1fr',
+		gap: '5rem',
+		gridTemplateAreas: `\"a b\"\r\n\"c d\"`,
+		[theme.breakpoints.down('xxl')]: {
+			width: '90vw',
+			gap: 1,
+			margin: 0,
+			padding: 0,
+		},
+		[theme.breakpoints.down('xl')]: {
+			display: 'grid',
+			gridTemplateColumns: '100%',
+			gridTemplateAreas:
+				'"a"\r\n            "b"\r\n            "d"\r\n            "c"',
+			placeItems: 'center',
+		},
+	},
+	reservationForm: {
+		gridArea: 'c',
+		[theme.breakpoints.down('xl')]: {
+			margin: 0,
+			marginBottom:"75px"
+		},
+		[theme.breakpoints.down('sm')]: {
+			display:"flex",
+			width: '450px',
+		},
+		'&:hover': {
+			cursor:"pointer",
+		},
 
-		'& li': {
-			display: 'flex',
-			justifyContent: 'space-between',
-		},
-		'& p': {
-			margin: '0.4rem',
-			padding: '0 2rem',
-		},
-	},
-	adress: {
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'space-around',
-		height: '350px',
-		width: '350px',
-		border: '2px solid black',
-		borderRadius: '10px',
-		listStyleType: 'none',
-		fontSize: '1.5rem',
-		padding: '1rem',
-		margin: '2rem',
-		'& li': {
-			marginBottom: '0.75rem',
-			padding: '0 2rem',
-		},
-	},
-	contactData: {
-		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'start',
-		justifyContent: 'space-between',
-		width: '100%',
-		height: '50%',
 	},
 
 	mapContainer: {
-		width: '50%',
-		height: '70vh',
-		border: '2px solid black',
+		width: '500px',
+		height: '500px',
 		borderRadius: '10px',
 		overflow: 'hidden',
-		margin: '1rem 2rem',
-	},
-
-	anotherRestaurant: {
-		height: '50%',
-		width: '100%',
-		fontSize: '1.5rem',
-		textAlign: 'center',
-		margin: '1rem',
-		'& img': {
-			width: '400px',
-			height: '250px',
-			margin: '1rem',
-			border: '2px solid black',
-			borderRadius: '10px',
-			cursor: 'pointer',
+		gridArea: 'b',
+		[theme.breakpoints.down('xl')]: {
+			margin: 0,
+		},
+		[theme.breakpoints.down('sm')]: {
+			width: '450px',
+			height: '450px',
+		},
+		'&:not(:hover)': {
+			filter: 'grayscale(100%)',
 		},
 	},
-	imgs: {
-		display: 'flex',
-		flexDirection: 'row',
-		textAlign: 'center',
-		marginRight: '2.5rem',
+	hours:{
+		display:"flex",
+		flexDirection:"column",
+		justifyContent:"center",
+		alignItems:"center",
+		width: '500px',
+		height: '500px',
+		display:"flex",
+
+		gridArea: 'a',
+		[theme.breakpoints.down('xl')]: {
+			height: '30vh',
+			width: '80vw',
+			margin: 0,
+		},
+		[theme.breakpoints.down('md')]: {
+			marginTop: '1rem',
+			marginBottom: '2rem',
+		},
+		
+	},
+	text:{
+		paddingTop:"10rem",
+		display:"flex",
+		justifyContent:"center",
+		alignItems:"center",
+		width: '500px',
+		height: '500px',
+		gridArea: 'd',
+		[theme.breakpoints.down('xl')]: {
+			height:"30vh",
+			width: '80vw',
+			margin: 0,
+		},
+		[theme.breakpoints.down('md')]: {
+			padding:"2rem",
+			marginTop: '1rem',
+			marginBottom: '2rem',
+		},
+	},
+
+
+	textArea:{
+		padding:"5rem",
+		textAlign:"center",
+		width: '70%',
+		height: '100%',
+		"&.MuiTypography-root":{
+			letterSpacing:"0.2rem",
+			lineHeight:"2",
+			},
+		'& mark':{
+			color:"brown",
+			backgroundColor:"transparent",
+			lineHeight:"2",
+
+		},
 	},
 });
 

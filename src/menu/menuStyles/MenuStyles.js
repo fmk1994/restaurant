@@ -7,7 +7,7 @@ const styles = {
 	fontFamily: "-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,sans-serif, Apple Color Emoji, Segoe UI Emoji",
 		padding: '2rem 2.25rem 1rem',
 		margin: '0 auto',
-		maxWidth: '50rem',
+		maxWidth: '60rem',
 		backgroundColor: 'white',
 		[sizes.up('md')]: {
 			display: 'grid',
@@ -16,7 +16,7 @@ const styles = {
 		},
 	},
 	Aside: {
-		gridColumn: '2 / 3',
+		gridColumn: '2/3',
 	},
 	Logo:{
 		width: "280px",
@@ -27,7 +27,20 @@ const styles = {
 		[sizes.up('md')]:{
 			marginBottom:"0",
 		},
-	}
+	},
+	button:{
+		'&.MuiButton-root': {
+			margin: '20px',
+
+			backdropFilter: 'blur(10px) brightness(60%)',
+
+			color: 'white',
+			width: '300px',
+			height: '80px',
+			fontSize: '20px',
+
+},
+	},
 };
 
 export default styles;

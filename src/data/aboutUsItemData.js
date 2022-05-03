@@ -5,8 +5,9 @@ import placeOpenedPhoto from '../pictures/placeOpenedPhoto.jpg';
 
 const aboutUsItemData = [
  
+
     {
-        name:"Zespół",
+        name:"Team",
         img:TeamPhoto,
         title:"chef",
         index:0,
@@ -16,7 +17,7 @@ const aboutUsItemData = [
         dialogPhoto:teamOpenedPhoto,
   },
     {
-        name:"Lokal",
+        name:"Place",
         img:PlacePhoto,
         title:"place",
         index:1,
@@ -25,8 +26,14 @@ const aboutUsItemData = [
         dialogTitle:"PLACE ipsum dolor sit amet, consectetur adipiscing elit",
         dialogPhoto:placeOpenedPhoto,
   },
-    
-  
-  ];
+]
 
-  export default aboutUsItemData;
+const aboutUsTextFill=[
+  {
+    TeamText:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at."
+  },
+  {
+    PlaceText:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at."
+  }
+]
+  export {aboutUsItemData, aboutUsTextFill};

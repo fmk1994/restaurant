@@ -25,6 +25,9 @@ ExtrasHeading:{
 ExtrasName:{
     flexGrow: "1",
 },
+notVisible:{
+    display:"none",
+},
 };
 
 export default styles;
