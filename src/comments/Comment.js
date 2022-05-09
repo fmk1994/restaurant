@@ -16,28 +16,29 @@ function Comment(props) {
 		updateComment,
 	} = props;
 	const twoMinutes = 120000;
-	const timePassed = new Date() - new Date(comment.createdAt) > twoMinutes;
-	const canEdit = currentUserId === comment.userId && !timePassed;
-	const canDelete = currentUserId === comment.userId && !timePassed;
-	const createdAt = new Date(comment.createdAt).toLocaleDateString();
+	const timePassed = new Date() - new Date(comment.publishDate) > twoMinutes;
+	const canEdit = currentUserId === comment.owner.id && !timePassed;
+const canDelete = currentUserId === comment.owner.id && timePassed;
+	const publishDate = new Date(comment.publishDate).toLocaleDateString();
 	const isEditing = activeComment && activeComment.id === comment.id;
+
 	return (
 		<div className={classes.comment}>
 			<div className={classes.commentData}>
 			
-			<div className={classes.createdAt}>{createdAt}</div>
-			<div className={classes.author}>{comment.username}</div>
+			<div className={classes.publishDate}>{publishDate}</div>
+			<div className={classes.author}>{comment.owner.firstName}</div>
 			</div>
 			<Divider
 					sx={{ width: '50vw', bgcolor: 'brown', marginBottom: '20px' }}
 					variant='middle'
 				/>
-			{!isEditing && <div className={classes.content}>{comment.body}</div>}
+			{!isEditing && <div className={classes.content}>{comment.message}</div>}
 			{isEditing && (
 				<CommentForm
 					submitLabel='Update'
 					hasCancelButton
-					initialText={comment.body}
+					initialText={comment.message}
 					handleSubmit={(text) => updateComment(text, comment.id)}
 					handleCancel={() => setActiveComment(null)}
 					updateComment={updateComment}
@@ -59,7 +60,7 @@ function Comment(props) {
 					>
 						Delete
 					</Button>
-				)}
+				)} 
 			</div>
 		</div>
 	);

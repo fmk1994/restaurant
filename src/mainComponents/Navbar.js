@@ -14,14 +14,13 @@ import Logoicon from '../pictures/ikona.png';
 import Popper from '@mui/material/Popover';
 import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
 import { Link, animateScroll as scroll } from 'react-scroll';
-
+import {TotalPriceContext} from '../contexts/TotalPriceContext';
 
 const pages = ['Menu', 'About Us', 'Gallery', 'Contact'];
 
 function Navbar(props) {
-	const { classes, totalPrice } = props;
-
-	
+	const { classes } = props;
+	const {totalPrice} = useContext(TotalPriceContext);
 	const handleAvataronClick = () => {
 		scroll.scrollToTop();
 

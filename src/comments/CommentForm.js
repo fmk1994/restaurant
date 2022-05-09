@@ -32,7 +32,7 @@ function CommentForm(props) {
 						<FormControl className={classes.nameInput} margin='normal' required >
 							<InputLabel htmlFor='name'>Enter your name</InputLabel>
 							<Input
-								inputProps={{ maxLength: 10 }}
+								inputProps={{ maxLength: 20 }}
 								value={username}
 								onChange={(e) => setUsername(e.target.value)}
 							/>
