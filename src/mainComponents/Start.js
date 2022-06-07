@@ -3,21 +3,17 @@ import { withStyles } from '@mui/styles';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import styles from '../styles/StartStyles';
-import Logoicon from '../pictures/ikona.png';
+import Logoicon from '../pictures/ikonastronastartowa.png';
 import { Link, animateScroll as scroll } from 'react-scroll';
 
-
 function Start(props) {
-
-
 	const { classes } = props;
 	return (
 		<Paper id='top' className={classes.mainPage}>
 			<div className={classes.logoArea}>
-				<img className={classes.logo} src={Logoicon} />
+				<img alt='logo' className={classes.logo} src={Logoicon} />
 			</div>
 			<div className={classes.buttonsArea}>
-
 				<Link
 					spy={true}
 					smooth={true}
@@ -38,7 +34,7 @@ function Start(props) {
 					key='bookTable'
 					className={classes.mainButtons}
 					variant='contained'
-					onClick={()=> scroll.scrollToBottom()}
+					onClick={() => scroll.scrollToBottom()}
 				>
 					Reservation
 				</Button>

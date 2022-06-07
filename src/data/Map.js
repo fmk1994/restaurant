@@ -11,8 +11,9 @@ function Map() {
 	const API_KEY = 'zvAseNUVgfAQxTfKL64O';
 
 	useEffect(() => {
-		if (map.current) return; //stops map from intializing more than once
-		map.current = new maplibregl.Map({
+		if (map.current) return; 
+		map.current = new maplibregl.Map(
+			{
 			container: mapContainer.current,
 			style: `https://api.maptiler.com/maps/streets/style.json?key=${API_KEY}`,
 			center: [lng, lat],

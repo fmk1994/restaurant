@@ -11,14 +11,12 @@ function Footer(props) {
 
 	return (
 		<Box className={classes.box} position='fixed'>
-				<IconButton href='//facebook.com/thegoodtasterestaurant123123'>
-					<FacebookIcon />
-				</IconButton>
-				<IconButton href='//instagram.com/thegoodtasterestaurant123123'>
-					<InstagramIcon />
-				</IconButton>
-
-
+			<IconButton href='//facebook.com/thegoodtasterestaurant123123'>
+				<FacebookIcon />
+			</IconButton>
+			<IconButton href='//instagram.com/thegoodtasterestaurant123123'>
+				<InstagramIcon />
+			</IconButton>
 		</Box>
 	);
 }

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {forwardRef, useState, useEffect, useCallback} from 'react';
 import { aboutUsItemData, aboutUsTextFill } from '../data/aboutUsItemData';
 import { withStyles } from '@mui/styles';
 import styles from '../styles/AboutUsStyles';
@@ -11,41 +11,34 @@ import Typography from '@mui/material/Typography';
 
 import { Divider } from '@mui/material';
 
-const Transition = React.forwardRef(function Transition(props, ref) {
+const Transition = forwardRef(function Transition(props, ref) {
 	return <Slide direction='up' ref={ref} {...props} />;
 });
 
 function AboutUs(props) {
 	const { classes } = props;
-	const [open, setOpen] = React.useState(false);
-	const [buttonIndex, setButtonIndex] = React.useState(0);
-	React.useEffect(() => {
+	const [open, setOpen] = useState(false);
+	const [buttonIndex, setButtonIndex] = useState(0);
+	useEffect(() => {
 		setButtonIndex(buttonIndex);
 	}, [buttonIndex]);
 
-	const handleClickOpen = (e) => {
+	const handleClickOpen = useCallback((e) => {
 		setButtonIndex(e.target.attributes.id.value);
 		setOpen(true);
-	};
+	},[]);
 
-	const handleClose = () => {
+	const handleClose = useCallback(() => {
 		setOpen(false);
-	};
+	},[]);
 
 	return (
 		<div id='about-us'>
 			<div className={classes.AboutUs}>
-				<Typography
-					variant='h1'
-					align='center'
-					sx={{ letterSpacing: '0.5rem', fontSize:{xs:"3rem", md:"4rem", xl:"6rem"} }}
-				>
+				<Typography className={classes.title} align='center'>
 					ABOUT US
 				</Typography>
-				<Divider
-					sx={{ width: '50vw', bgcolor: 'brown', marginBottom: {xs:'5px', sm:'20px'} }}
-					variant='middle'
-				/>
+				<Divider className={classes.divider} variant='middle' />
 
 				<div className={classes.ContentWrapper}>
 					{aboutUsItemData.map((data, index) => (
@@ -95,7 +88,7 @@ function AboutUs(props) {
 				<Dialog
 					id={buttonIndex}
 					fullWidth
-					maxWidth={'xxl'}
+					maxWidth={'xl'}
 					className={classes.Dialog}
 					open={open}
 					TransitionComponent={Transition}

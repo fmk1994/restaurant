@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useState, useEffect, useCallback } from 'react';
 import Input from '@mui/material/Input';
 import { withStyles } from '@mui/styles';
 import styles from '../styles/ReservationFormStyles';
@@ -29,10 +29,10 @@ const initialFormData = Object({
 
 function ReservationForm(props) {
 	const { classes } = props;
-	const [formData, setFormData] = React.useState(initialFormData);
+	const [formData, setFormData] = useState(initialFormData);
 	const seats = [1, 2, 3, 4, 5, 6];
 
-	const handleSubmit = (e) => {
+	const handleSubmit = useCallback((e) => {
 		e.preventDefault();
 
 		setFormData({
@@ -44,13 +44,13 @@ function ReservationForm(props) {
 			text,
 		});
 		alert(`Reservation params: ${JSON.stringify(formData)}`);
-	};
-	const [guestsNum, setGuestsNum] = React.useState(1);
-	const [date, setDate] = React.useState(new Date(nextDay));
-	const [text, setText] = React.useState('');
-	const [number, setNumber] = React.useState('');
-	const [firstName, setFirstName] = React.useState('');
-	const [lastName, setLastName] = React.useState('');
+	},[]);
+	const [guestsNum, setGuestsNum] = useState(1);
+	const [date, setDate] = useState(new Date(nextDay));
+	const [text, setText] = useState('');
+	const [number, setNumber] = useState('');
+	const [firstName, setFirstName] = useState('');
+	const [lastName, setLastName] = useState('');
 
 	useEffect(() => {
 		setFormData({
@@ -100,7 +100,7 @@ function ReservationForm(props) {
 					</Select>
 				</FormControl>
 
-				<FormControl margin='normal'>
+				<FormControl margin='normal' required>
 					<InputLabel htmlFor='firstName'>First Name</InputLabel>
 					<Input
 						id='firstName'
@@ -110,7 +110,7 @@ function ReservationForm(props) {
 						inputProps={{ maxLength: 20 }}
 					/>
 				</FormControl>
-				<FormControl margin='normal'>
+				<FormControl margin='normal' required>
 					<InputLabel htmlFor='lastName'>Last Name</InputLabel>
 					<Input
 						id='lastName'
@@ -121,7 +121,7 @@ function ReservationForm(props) {
 					/>
 				</FormControl>
 
-				<FormControl margin='normal'>
+				<FormControl margin='normal' required>
 					<MuiPhoneNumber
 						defaultCountry='pl'
 						regions='europe'

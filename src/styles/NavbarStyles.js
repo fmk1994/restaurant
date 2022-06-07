@@ -1,12 +1,12 @@
-const styles = (theme) => ({
+const styles = () => ({
 	AppBar: {
 		'&.MuiAppBar-root': {
-			boxShadow: 'none',
-			height: '70px',
+			height: '75px',
 			display: 'flex',
 			justifyContent: 'space-around',
 			backgroundColor: 'white',
 			color: 'black',
+			boxShadow: '0px 3px 1px -2px rgb(0 0 0 / 20%)',
 		},
 	},
 	menuButtons: {
@@ -17,7 +17,7 @@ const styles = (theme) => ({
 
 	Link: {
 		textDecoration: 'none',
-		padding: '0 3rem',
+		padding: '0 2rem',
 	},
 
 	MenuItems: {
@@ -29,26 +29,12 @@ const styles = (theme) => ({
 
 	Avatar: {
 		cursor: 'pointer',
-		transform: 'scale(1.5)',
+		transform: 'scale(1.2)',
 		'&:hover': {
-			transform: 'scale(1.7)',
+			transform: 'scale(1.5)',
 		},
 	},
-	basket: {
-		
-		position:"relative",
-		marginLeft: '3rem',
-		'&:hover': {
-			transform: 'scale(1.3)',
-		},
-	},
-	counter:{
-position:"absolute",
-left:"30px",
-top:"5px",
-zIndex:"2",
-fontSize:"10px"
+	
 
-	},
 });
 export default styles;

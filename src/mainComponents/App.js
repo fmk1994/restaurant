@@ -9,37 +9,31 @@ import Footer from './Footer';
 import Comments from './Comments';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../styles/createTheme';
-import {TotalPriceContextProvider} from '../contexts/TotalPriceContext';
+import { TotalPriceContextProvider } from '../contexts/TotalPriceContext';
 import { MenuProvider } from '../contexts/MenuContext';
+import { withStyles } from '@mui/styles';
+import styles from '../styles/AppStyles';
 
-export default function App() {
+function App(props) {
+	const {classes} = props;
 	return (
-		<ThemeProvider theme={theme}>
 
+		<ThemeProvider theme={theme}>
 			<MenuProvider>
-				<main
-					style={{
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'center',
-						margin: 0,
-						padding: 0,
-					}}
-				>
-			<TotalPriceContextProvider>
-						{/* <Navbar />
+				<main className={classes.main}>
+					<TotalPriceContextProvider>
+					<Navbar />
 						<Start />
 						<Menu />
 						<AboutUs />
-						<Gallery /> */}
-
-						<Comments currentUserId='60d0fe4f5311236168a109d0'/>
-						{/*<Contact />
-						<Footer /> */}
-						</TotalPriceContextProvider>
+						<Gallery />
+						<Comments />
+						<Contact />
+						<Footer />
+					</TotalPriceContextProvider>
 				</main>
 			</MenuProvider>
-
 		</ThemeProvider>
-	);
+	)
 }
+export default withStyles(styles)(App)

@@ -1,9 +1,8 @@
 import Image from '../pictures/pic1.png';
-import sizes from './sizes.js';
 const styles = (theme) => ({
 	mainPage: {
-		display:"flex",
-		justifyContent:"center",
+		display: 'flex',
+		justifyContent: 'center',
 		flexDirection: 'column',
 		height: '100vh',
 		width: '98vw',
@@ -13,20 +12,22 @@ const styles = (theme) => ({
 		margin: 0,
 		padding: 0,
 		boxShadow: 'none',
+		marginBottom: '10rem',
 	},
 
 	logoArea: {
 		display: 'flex',
 		justifyContent: 'center',
-		transform: "scale(0.6)",
 		width: '100%',
 	},
 	logo: {
+		width:"300px",
+		height:"300px",
 		borderRadius: '50%',
-		[sizes.down('md')]: {
+
+		[theme.breakpoints.down('md')]: {
 			transform: 'scale(0.8)',
 		},
-
 	},
 
 	buttonsArea: {
@@ -36,20 +37,21 @@ const styles = (theme) => ({
 		color: 'white',
 		flexDirection: 'column',
 		alignItems: 'center',
-		marginBottom:"100px"
-
+		justifyContent:"center",
+		marginTop:"2rem",
+		
 	},
-	
+
 	mainButtons: {
 		'&.MuiButton-root': {
 			margin: '20px',
-			backdropFilter: 'blur(10px) brightness(60%)',
-			color: 'white',
+			backgroundColor: 'white',
+			color: 'black',
 			width: '300px',
 			height: '80px',
 			fontSize: '20px',
-			[sizes.down('md')]: {
-				margin: '20px',
+			[theme.breakpoints.down('md')]: {
+				margin: '5px',
 			},
 		},
 	},

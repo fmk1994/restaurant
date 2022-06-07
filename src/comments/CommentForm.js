@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState, useCallback } from 'react';
 import { withStyles } from '@mui/styles';
 import styles from './styles/CommentFormStyles';
 import Box from '@mui/material/Box';
@@ -19,36 +19,42 @@ function CommentForm(props) {
 	const [text, setText] = useState(initialText);
 	const [username, setUsername] = useState('');
 	const isSubmitButtonDisabled = text.length === 0;
-	const onSubmit = (event) => {
-		event.preventDefault();
-		handleSubmit(text, username);
-		setText('');
-		setUsername('');
-	};
+	
+		const onSubmit = useCallback((event) => {
+			event.preventDefault();
+			handleSubmit(text, username);
+			setText('');
+			setUsername('');
+	},[text,username]);
+	
 	return (
 		<Box>
 			<form className={classes.form} onSubmit={onSubmit}>
 				{!hasCancelButton && (
-						<FormControl className={classes.nameInput} margin='normal' required >
-							<InputLabel htmlFor='name'>Enter your name</InputLabel>
-							<Input
-								inputProps={{ maxLength: 20 }}
-								value={username}
-								onChange={(e) => setUsername(e.target.value)}
-							/>
-						</FormControl>
+					<FormControl className={classes.nameInput} margin='normal' required>
+						<InputLabel htmlFor='name'>Enter your name</InputLabel>
+						<Input
+							inputProps={{ maxLength: 11 }}
+							value={username}
+							onChange={(e) => setUsername(e.target.value)}
+						/>
+					</FormControl>
 				)}
 				<TextField
-				label="Type here..."
-				className={classes.textField}
+					label='Type here...'
+					className={classes.textField}
 					multiline
-					inputProps={{ maxLength: 200}}
+					inputProps={{ maxLength: 200 }}
 					rows={4}
 					value={text}
 					onChange={(e) => setText(e.target.value)}
 				/>
-				
-				<Button className={classes.formButton} type='submit' disabled={isSubmitButtonDisabled}>
+
+				<Button
+					className={classes.formButton}
+					type='submit'
+					disabled={isSubmitButtonDisabled}
+				>
 					{submitLabel}
 				</Button>
 				{hasCancelButton && (

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, {Fragment, useEffect, useContext } from 'react';
 
 import data from '../data';
 import { withStyles } from '@mui/styles';
@@ -12,7 +12,7 @@ function Total(props) {
 
 	const { totalPrice, setTotalPrice } = useContext(TotalPriceContext);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		const totalPrice = Object.keys(items).reduce((acc, curr) => {
 			const [group, item] = curr.split('-');
 
@@ -22,14 +22,14 @@ function Total(props) {
 		}, 0);
 		setTotalPrice(totalPrice);
 	}, [items]);
-  
+
 	return (
-		<>
+		<Fragment>
 			<div className={classes.Total}>
 				<span className={classes.TotalTitle}>Total:</span>
 				<span className={classes.TotalPrice}>${totalPrice}</span>
 			</div>
-		</>
+		</Fragment>
 	);
 }
 

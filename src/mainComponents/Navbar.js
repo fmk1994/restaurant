@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { Fragment, useState, useCallback } from 'react';
 import { withStyles } from '@mui/styles';
 import styles from '../styles/NavbarStyles';
 import AppBar from '@mui/material/AppBar';
@@ -12,32 +12,30 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import Logoicon from '../pictures/ikona.png';
 import Popper from '@mui/material/Popover';
-import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
+import OrderDetails from './OrderDetails';
 import { Link, animateScroll as scroll } from 'react-scroll';
-import {TotalPriceContext} from '../contexts/TotalPriceContext';
 
 const pages = ['Menu', 'About Us', 'Gallery', 'Contact'];
 
 function Navbar(props) {
 	const { classes } = props;
-	const {totalPrice} = useContext(TotalPriceContext);
-	const handleAvataronClick = () => {
-		scroll.scrollToTop();
 
-	};
+	const handleAvataronClick = useCallback(() => {
+		scroll.scrollToTop();
+	},[]);
 
 	const [anchorElNav, setAnchorElNav] = useState(null);
 
-	const handleOpenNavMenu = (event) => {
+	const handleOpenNavMenu = useCallback((event) => {
 		setAnchorElNav(event.currentTarget);
-	};
+	},[]);
 
-	const handleCloseNavMenu = () => {
+	const handleCloseNavMenu = useCallback(() => {
 		setAnchorElNav(null);
-	};
+	},[]);
 
 	return (
-		<>
+		<Fragment>
 			<AppBar className={classes.AppBar} position='fixed'>
 				<Container maxWidth='lg'>
 					<Toolbar className={classes.toolbar}>
@@ -95,7 +93,6 @@ function Navbar(props) {
 										underline='none'
 										to={`${page.toLowerCase().replace(' ', '-')}`}
 										key={page.toLowerCase().replace('ó', 'o').replace(' ', '-')}
-									
 									>
 										<MenuItem
 											className={classes.MenuItems}
@@ -131,7 +128,6 @@ function Navbar(props) {
 									underline='none'
 									to={`${page.toLowerCase().replace(' ', '-')}`}
 									key={page.toLowerCase().replace(' ', '-')}
-								
 								>
 									<Button
 										className={classes.menuButtons}
@@ -143,15 +139,11 @@ function Navbar(props) {
 								</Link>
 							))}
 						</Box>
-						<Box className={classes.basket}>
-							<ShoppingBasketOutlinedIcon />
-							<div className={classes.counter}>{`(${totalPrice}$)`}</div>
-						</Box>
+						<OrderDetails />
 					</Toolbar>
 				</Container>
 			</AppBar>
-	
-		</>
+		</Fragment>
 	);
 }
 

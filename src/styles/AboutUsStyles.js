@@ -5,7 +5,7 @@ const styles = (theme) => ({
 		flexDirection: 'column',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		margin: '70px 70px 0 0',
+		margin: '70px 70px 10rem 0',
 		width: '80vw',
 		[theme.breakpoints.down('xxl')]: {
 			width: '100vw',
@@ -13,12 +13,30 @@ const styles = (theme) => ({
 			marginTop: '75px',
 		},
 	},
+	title: {
+		'&.MuiTypography-root': {
+			letterSpacing: '0.5rem',
+			[theme.breakpoints.up('xs')]: { fontSize: '2.5rem' },
+			[theme.breakpoints.up('md')]: { fontSize: '3rem' },
+			[theme.breakpoints.up('xl')]: { fontSize: '4rem' },
+		},
+	},
+	divider: {
+		'&.MuiDivider-root': {
+			width: '50vw',
+			backgroundColor: 'brown',
+			marginBottom: '10rem',
+
+			[theme.breakpoints.down('xl')]: { marginBottom: '2rem' },
+			[theme.breakpoints.down('md')]: { marginBottom: '1rem' },
+		},
+	},
 	ContentWrapper: {
 		display: 'grid',
 		gridTemplateColumns: '1fr 1fr',
 		gridTemplateRows: '1fr 1fr',
-		gap: '5rem',
-		gridTemplateAreas: `\"a b\"\r\n\"c d\"`,
+		gap: '10rem',
+		gridTemplateAreas: '"a b"\r\n"c d"',
 		[theme.breakpoints.down('xxl')]: {
 			width: '90vw',
 			gap: 1,
@@ -36,17 +54,18 @@ const styles = (theme) => ({
 	Box: {
 		width: '500px',
 		height: '500px',
-		marginTop: '4rem',
-		marginLeft: '2rem',
-		borderRadius: '10px',
+		margin: '2rem',
+		borderRadius: '20px',
 		cursor: 'pointer',
 		backgroundRepeat: 'no-repeat',
 		backgroundSize: 'cover',
 		display: 'flex',
 		alignItems: 'end',
-
-		'&:not(:hover)': {
-			filter: 'grayscale(100%)',
+		'&:hover': {
+			transform: 'scale(1.02)',
+			boxShadow: `0px 3px 1px -2px rgb(0 0 0 / 20%),
+			 0px 2px 2px 0px rgb(0 0 0 / 14%), 
+			 0px 1px 5px 0px rgb(0 0 0 / 12%)`,
 		},
 
 		[theme.breakpoints.down('xl')]: {
@@ -58,22 +77,24 @@ const styles = (theme) => ({
 		},
 	},
 	textArea: {
-		display: 'flex',
-		alignItems: 'center',
-		width: '70%',
-		height: '100%',
 		'&.MuiTypography-root': {
+			display: 'flex',
+			alignItems: 'center',
+			width: '500px',
+			height: '500px',
+			margin: '2rem',
 			letterSpacing: '0.2rem',
 			lineHeight: '2',
-
+			justifyContent: 'flex-end',
+			'&.nth-child(even)': {
+				justifyContent: 'flex-end',
+			},
 			[theme.breakpoints.down('xl')]: {
-				height: '50vh',
-				width: '80vw',
 				margin: 0,
 			},
 			[theme.breakpoints.down('md')]: {
-				marginTop: '1rem',
-				marginBottom: '2rem',
+				width: '450px',
+				height: '450px',
 			},
 		},
 	},
@@ -95,24 +116,22 @@ const styles = (theme) => ({
 	Dialog: {
 		display: 'flex',
 		justifyContent: 'center',
-		flexDirection: 'column',
-		alignItems: 'center',
+		overflowX: 'hidden',
 	},
 
 	dialogPhoto: {
-		width: '1400px',
-		height: '1000px',
+		width: '1120px',
+		height: '800px',
 		backgroundRepeat: 'no-repeat',
-		backgroundSize: 'cover',
+		backgroundSize: '100%',
 
 		[theme.breakpoints.down('xxl')]: {
-			backgroundSize: '100%',
 			width: '1100px',
 			height: '800px',
 		},
 		[theme.breakpoints.down('xl')]: {
-			width: '1000px',
-			height: '900px',
+			width: '950px',
+			height: '800px',
 		},
 		[theme.breakpoints.down('lg')]: {
 			width: '800px',

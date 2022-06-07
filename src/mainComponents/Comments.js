@@ -1,87 +1,50 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Comment from '../comments/Comment';
 import CommentForm from '../comments/CommentForm';
 import { v4 as uuidv4 } from 'uuid';
-// import {
-// 	createComment as createCommentApi,
-// 	deleteComment as deleteCommentApi,
-// 	updateComment as updateCommentApi,
-// } from '../data/api';
 import { withStyles } from '@mui/styles';
 import styles from '../styles/CommentsStyles';
 import { Box } from '@mui/material';
 import axios from 'axios';
+const currentUserId = '60d0fe4f5311236168a10a0b';
+const currentPostId = '627ad3feeaca7420ddf7e27b';
+const axiosConfig = {
+	headers: {
+		'app-id': '6276996b23643119d097588f',
+		'Content-Type': 'application/json',
+	},
+};
 
 function Comments(props) {
-	const { classes, currentUserId } = props;
-
+	const { classes } = props;
 	const [backendComments, setBackendComments] = useState([]);
 	const [activeComment, setActiveComment] = useState(null);
 
-	useEffect(() => {
+	const addComment = useCallback((text, username) => {
 		axios
-			.get('https://dummyapi.io/data/v1/comment?limit=5&created=0', {
-				headers: { 'app-id': '6276996b23643119d097588f' },
-			})
+			.post(
+				'https://dummyapi.io/data/v1/post/create',
+				{
+					owner: currentUserId,
+					post: currentPostId,
+					text: text,
+					tags: [username],
+				},
+				axiosConfig
+			)
 			.then((response) => {
-				setBackendComments(response.data.data);
-				console.log(response)
+				setBackendComments([response.data, ...backendComments]);
+				setActiveComment(null);
 			})
 			.catch((error) => {
-				alert(error);
+				console.log(error);
 			});
 	}, []);
 
-	{
-		/*==========================================================
-	const addComment = (text, username) => {
-		createCommentApi(text, username).then((comment) => {
-			setBackendComments([comment, ...backendComments]);
-			
-		});
-	};
-=============================================================*/
-	}
-
-	async function addComment  (text, username)  {
-		await axios
-			.post(
-				'https://dummyapi.io/data/v1/comment/create',
-				{
-
-					owner: {
-						firstName: username,
-						id: uuidv4(),
-						lastName: '',
-						picture: '',
-						title: '',
-					},
-					post: '',
-					message:text
-				},
-				{
-					headers: {
-						'app-id': '6276996b23643119d097588f',
-					},
-				}
-			)
-			.then((comment) => {
-				setBackendComments([comment, ...backendComments]);
-				console.log(comment)
-			})
-			.catch((error) => {
-				alert(error);
-			});
-
-	};
-
-	const deleteComment = (commentId) => {
-		console.log(commentId);
+	const deleteComment = useCallback((commentId) => {
 		if (window.confirm('Are you sure that you want to remove comment?')) {
 			axios
-				.delete(`https://dummyapi.io/data/v1/comment/${commentId}`, {
-					headers: { 'app-id': '6276996b23643119d097588f' },
-				})
+				.delete(`https://dummyapi.io/data/v1/post/${commentId}`, axiosConfig)
 				.then(() => {
 					const updatedBackendComments = backendComments.filter(
 						(backendComment) => backendComment.id !== commentId
@@ -92,40 +55,66 @@ function Comments(props) {
 					alert(error);
 				});
 		}
-	}
-	//
-	// const updateComment = (text, commentId) => {
-	// 	updateCommentApi(text, commentId).then(() => {
-	// 		const updatedBackendComments = backendComments.map((backendComment) => {
-	// 			if (backendComment.id === commentId) {
-	// 				return { ...backendComment, body: text };
-	// 			}
-	// 			return backendComment;
-	// 		});
-	// 		setBackendComments(updatedBackendComments);
-	// 		setActiveComment(null);
-	// 	});
-	// };
+	},[]);
 
-	
+	const updateComment = useCallback((text, commentId) => {
+		axios
+			.put(
+				`https://dummyapi.io/data/v1/post/${commentId}`,
+				{
+					text: text,
+				},
+
+				axiosConfig
+			)
+			.then((response) => {
+				console.log(response.data);
+				const updatedBackendComments = backendComments.map((backendComment) => {
+					console.log(backendComment);
+					if (backendComment.id === commentId) {
+						console.log(backendComment);
+						return { ...backendComment, text: response.data.text };
+					}
+					return backendComment;
+				});
+				setBackendComments(updatedBackendComments);
+				setActiveComment(null);
+			})
+			.catch((error) => {
+				alert(error);
+			});
+	}, []);
+
+	useEffect(async () => {
+		await axios
+			.get('https://dummyapi.io/data/v1/post?limit=10&created=1', axiosConfig)
+			.then((response) => {
+				setBackendComments([...response.data.data]);
+				
+			})
+			.catch((error) => {
+				alert(error);
+			});
+	}, []);
+
 	return (
 		<div className={classes.commentsWrapper}>
 			<Box className={classes.comments}>
 				{backendComments.map((comment) => (
 					<Comment
-						key={comment.id}
+						key={uuidv4()}
 						comment={comment}
 						currentUserId={currentUserId}
 						deleteComment={deleteComment}
 						activeComment={activeComment}
 						setActiveComment={setActiveComment}
-						// updateComment={updateComment}
+						updateComment={updateComment}
 					/>
 				))}
 			</Box>
 			<div className={classes.commentFormWrapper}>
 				<div className={classes.commentFormTitle}>Write your comment!</div>
-				<CommentForm submitLabel='write' handleSubmit={addComment} />
+				<CommentForm submitLabel='post' handleSubmit={addComment} />
 			</div>
 		</div>
 	);
