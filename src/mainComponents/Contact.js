@@ -15,8 +15,7 @@ function Contact(props) {
 			<Typography variant='h1' align='center' className={classes.title}>
 				CONTACT
 			</Typography>
-			<Divider
-				sx={{ width: '50vw', bgcolor: 'brown', marginBottom: '5rem' }}
+			<Divider className={classes.divider}
 				variant='middle'
 			/>
 			<div className={classes.contentWrapper}>
@@ -36,10 +35,10 @@ function Contact(props) {
 						via email <mark>thegoodtaste@office123.com</mark>
 					</Typography>
 				</Box>
-				<Box className={classes.text}>
+				<Box className={classes.textBox}>
 					<Typography className={classes.textArea}>
 						Please use the <mark>booking form</mark>. Use <mark>Notes</mark> to
-						let us know if you have any <mark>allergies</mark>.
+						let us know if you have any <mark>allergies</mark>. We have 15 tables for you to book. We recommend booking one of three balcony tables overlooking the city!
 					</Typography>
 				</Box>
 			</div>

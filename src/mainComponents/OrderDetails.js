@@ -17,14 +17,13 @@ import RadioGroup from '@mui/material/RadioGroup';
 import MuiPhoneNumber from 'material-ui-phone-number';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { TotalPriceContext } from '../contexts/TotalPriceContext';
-import {MenuContext} from '../contexts/MenuContext';
+import { MenuContext } from '../contexts/MenuContext';
 import { Radio } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import basketIcon from '../pictures/shoppingbasket.jpg';
 import cookingImg from '../pictures/cooking.png';
 import emptyCartImg from '../pictures/empty-cart.png';
-// import data from '../menu/data.json';
-
+import data from '../menu/data.json';
 
 function OrderDetails(props) {
 	const initialFormData = Object({
@@ -34,7 +33,7 @@ function OrderDetails(props) {
 		firstName: '',
 		lastName: '',
 		paymentMethod: '',
-		order:'',
+		order: '',
 	});
 
 	const { classes } = props;
@@ -52,8 +51,18 @@ function OrderDetails(props) {
 
 	const { totalPrice } = useContext(TotalPriceContext);
 	const [items] = useContext(MenuContext);
-let itemss = Object.keys(items).map((item)=>{return item})
-	
+	let orderedItems = Object.entries(items).map((item) => {
+		return item;
+		
+	});
+	console.dir(data)
+	orderedItems.map((array)=>{
+		if(array[1]!==0){
+			return(array[0])
+		}
+	});
+
+
 	const handleOpen = useCallback(() => {
 		setOpen(true);
 	}, []);
@@ -80,9 +89,10 @@ let itemss = Object.keys(items).map((item)=>{return item})
 				firstName,
 				lastName,
 				paymentMethod,
+				
 			});
 			console.log(JSON.stringify(formData));
-			
+
 			handleThanksPage();
 		},
 		[formData]
@@ -95,6 +105,7 @@ let itemss = Object.keys(items).map((item)=>{return item})
 			firstName,
 			lastName,
 			paymentMethod,
+			
 		});
 	}, [deliveryMethod, adress, number, firstName, lastName, paymentMethod]);
 	return (
@@ -120,12 +131,6 @@ let itemss = Object.keys(items).map((item)=>{return item})
 						<DialogTitle>{`Empty Order!`}</DialogTitle>
 						<DialogContent className={classes.emptyOrderDialog}>
 							<img src={emptyCartImg} />
-							<a
-								href='https://www.flaticon.com/free-icons/empty-cart'
-								title='empty cart icons'
-							>
-								Empty cart icons created by smashingstocks - Flaticon
-							</a>
 						</DialogContent>
 						<DialogActions>
 							<Button onClick={handleClose}>Cancel</Button>
@@ -144,7 +149,7 @@ let itemss = Object.keys(items).map((item)=>{return item})
 							</DialogContentText>
 							<FormControl required>
 								<RadioGroup
-								row
+									row
 									value={deliveryMethod}
 									onChange={(e) => setDeliveryMethod(e.target.value)}
 									aria-labelledby='delivery-method'
@@ -227,7 +232,7 @@ let itemss = Object.keys(items).map((item)=>{return item})
 							<DialogContentText>{'How do you want to pay?'}</DialogContentText>
 							<FormControl required>
 								<RadioGroup
-								row
+									row
 									value={paymentMethod}
 									onChange={(e) => setPaymentMethod(e.target.value)}
 									aria-labelledby='payment-method'
@@ -271,18 +276,12 @@ let itemss = Object.keys(items).map((item)=>{return item})
 				</DialogTitle>
 				<DialogContent className={classes.thankYouDialogContent}>
 					<DialogContentText>
-						{`You've ordered ${itemss}`}
+						{`You've ordered ${orderedItems}`}
 					</DialogContentText>
 					<DialogContentText>
 						{'Estimated delivery/pick up time 30-60 min.'}
 					</DialogContentText>
 					<img src={cookingImg} />
-					<a
-						href='https://www.flaticon.com/free-icons/preparation'
-						title='preparation icons'
-					>
-						Preparation icons created by SBTS2018 - Flaticon
-					</a>
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={handleClose}>Close</Button>
@@ -293,13 +292,13 @@ let itemss = Object.keys(items).map((item)=>{return item})
 }
 export default withStyles(styles)(OrderDetails);
 // function contains(a, obj) {
-	// 	for (var i = 0; i < a.length; i++) {
-	// 		if (a[i] === obj) {
-	// 			return true;
-	// 		}
-	// 	}
-	// 	return false;
-	// }
+// 	for (var i = 0; i < a.length; i++) {
+// 		if (a[i] === obj) {
+// 			return true;
+// 		}
+// 	}
+// 	return false;
+// }
 // 	console.log(items)
 // 	let itemss = Object.keys(items).map((item)=>{return item})
 // console.log(itemss);
@@ -307,13 +306,11 @@ export default withStyles(styles)(OrderDetails);
 // const item = itemss.map((item)=>{
 // 	console.log(item);
 // 	return item;
-	
+
 // });
 // arrayOfNames.forEach((name)=>{
 // 	console.log(name)
 // })
-
-
 
 // let arrayOfNames=[];
 // Object.values(data).forEach((value)=>{
@@ -322,7 +319,6 @@ export default withStyles(styles)(OrderDetails);
 // 		const name = meal.name;
 // 		obj[`${meal.index}`] = name;
 // 		arrayOfNames.push(obj);
-	
+
 // 	})
 // });
-

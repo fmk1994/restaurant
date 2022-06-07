@@ -8,9 +8,8 @@ import styles from '../menuStyles/InputStyles';
 
 function Input(props) {
 	const { type, name, index, classes } = props;
-	const [, updateItem] = useContext(MenuContext);
+	const [,updateItem] = useContext(MenuContext);
 	const [count, setCount] = useState(0);
-
 	useEffect(() => {
 		updateItem(type, index, count);
 	}, [count]);

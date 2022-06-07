@@ -11,12 +11,31 @@ function Footer(props) {
 
 	return (
 		<Box className={classes.box} position='fixed'>
-			<IconButton href='//facebook.com/thegoodtasterestaurant123123'>
-				<FacebookIcon />
-			</IconButton>
-			<IconButton href='//instagram.com/thegoodtasterestaurant123123'>
-				<InstagramIcon />
-			</IconButton>
+			<div>
+				<IconButton href='//facebook.com/thegoodtasterestaurant123123'>
+					<FacebookIcon />
+				</IconButton>
+				<IconButton href='//instagram.com/thegoodtasterestaurant123123'>
+					<InstagramIcon />
+				</IconButton>
+			</div>
+			<div className={classes.creditsWrapper}>
+				Used images:
+
+				<a
+					href='https://www.flaticon.com/free-icons/empty-cart'
+					title='empty cart icons'
+				>
+					Empty cart icons created by smashingstocks - Flaticon
+				</a>
+				<a
+					href='https://www.flaticon.com/free-icons/preparation'
+					title='preparation icons'
+				>
+					Preparation icons created by SBTS2018 - Flaticon
+				</a>
+
+			</div>
 		</Box>
 	);
 }

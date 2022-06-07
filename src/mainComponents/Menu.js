@@ -4,7 +4,7 @@ import Extras from '../menu/menuComponents/Extras';
 import Total from '../menu/menuComponents/Total';
 import data from '../menu/data.json';
 import { withStyles } from '@mui/styles';
-import styles from '../menu/menuStyles/MenuStyles';
+import styles from '../styles/MenuStyles';
 import Image from '../pictures/ikona.png';
 
 
@@ -19,7 +19,7 @@ function Menu(props) {
 					<Extras type='Sides' items={data.sides} />
 					<Extras type='Drinks' items={data.drinks} />
 				</aside>
-				<Total />
+				<Total  />
 			</div>
 	);
 }

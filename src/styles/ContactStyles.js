@@ -11,6 +11,16 @@ const styles = (theme) => ({
 			margin: 0,
 		},
 	},
+	divider:{
+		'&.MuiDivider-root':{
+		width: '50vw', 
+		backgroundColor: 'brown', 
+		marginBottom: '5rem',
+		[theme.breakpoints.down('sm')]:{
+			margin:0
+		},
+	},
+},
 	title: {
 		'&.MuiTypography-root': {
 			letterSpacing: '0.5rem',
@@ -38,12 +48,12 @@ const styles = (theme) => ({
 			padding: 0,
 		},
 		[theme.breakpoints.down('xl')]: {
-			display: 'grid',
 			gridTemplateColumns: '100%',
 			gridTemplateAreas:
 				'"a"\r\n            "b"\r\n            "d"\r\n            "c"',
 			placeItems: 'center',
 		},
+
 	},
 	reservationForm: {
 		paddingBottom: '15px',
@@ -54,7 +64,7 @@ const styles = (theme) => ({
 		},
 		[theme.breakpoints.down('sm')]: {
 			display: 'flex',
-			width: '450px',
+			width: '100vw',
 		},
 		'&:hover': {
 			cursor: 'pointer',
@@ -71,8 +81,8 @@ const styles = (theme) => ({
 			margin: 0,
 		},
 		[theme.breakpoints.down('sm')]: {
-			width: '450px',
-			height: '450px',
+			width:"100vw",
+			marginBottom:"10rem",
 		},
 		'&:hover': {
 			transform: 'scale(1.02)',
@@ -100,7 +110,7 @@ const styles = (theme) => ({
 			marginBottom: '2rem',
 		},
 	},
-	text: {
+	textBox: {
 		paddingTop: '10rem',
 		display: 'flex',
 		justifyContent: 'center',
@@ -109,22 +119,31 @@ const styles = (theme) => ({
 		height: '500px',
 		gridArea: 'd',
 		[theme.breakpoints.down('xl')]: {
-			height: '30vh',
 			width: '80vw',
 			margin: 0,
 		},
 		[theme.breakpoints.down('md')]: {
+			height:"50vh",
 			padding: '2rem',
-			marginTop: '1rem',
-			marginBottom: '2rem',
 		},
+
 	},
 
 	textArea: {
 		padding: '5rem',
 		textAlign: 'center',
 		width: '70%',
-		height: '100%',
+		height:"100%",
+		[theme.breakpoints.down('xl')]: {
+			width:"500px",
+			height:"100px",
+		},
+		[theme.breakpoints.down('sm')]: {
+			padding: '0 0',
+			marginTop:"2rem",
+			width:"90vw",
+			height:"30vh"
+		},
 		'&.MuiTypography-root': {
 			letterSpacing: '0.2rem',
 			lineHeight: '2',
@@ -134,6 +153,7 @@ const styles = (theme) => ({
 			backgroundColor: 'transparent',
 			lineHeight: '2',
 		},
+
 	},
 });
 

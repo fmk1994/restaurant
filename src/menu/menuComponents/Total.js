@@ -11,7 +11,6 @@ function Total(props) {
 	const [items] = useContext(MenuContext);
 
 	const { totalPrice, setTotalPrice } = useContext(TotalPriceContext);
-
 	useEffect(() => {
 		const totalPrice = Object.keys(items).reduce((acc, curr) => {
 			const [group, item] = curr.split('-');

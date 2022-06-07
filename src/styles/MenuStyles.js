@@ -5,7 +5,7 @@ const styles =(theme) => ({
 		color: 'grey',
 		fontFamily:
 			'-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,sans-serif, Apple Color Emoji, Segoe UI Emoji',
-		padding: '2rem 2.25rem 1rem',
+		padding: '75px 2.25rem 1rem',
 		margin: '0 0 10rem 0',
 		maxWidth: '60rem',
 		backgroundColor: 'white',

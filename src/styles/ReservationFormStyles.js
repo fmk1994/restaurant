@@ -1,11 +1,12 @@
 const styles = {
 	wrapper: {
-		width: '600px',
+		width: '500px',
 		height: '600px',
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
+		paddingTop:"75px"
 	},
 
 	form: {

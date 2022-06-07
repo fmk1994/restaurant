@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import Comment from '../comments/Comment';
 import CommentForm from '../comments/CommentForm';
+import { Typography } from '@mui/material';
+import { Divider } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 import { withStyles } from '@mui/styles';
 import styles from '../styles/CommentsStyles';
@@ -39,7 +41,7 @@ function Comments(props) {
 			.catch((error) => {
 				console.log(error);
 			});
-	}, []);
+	});
 
 	const deleteComment = useCallback((commentId) => {
 		if (window.confirm('Are you sure that you want to remove comment?')) {
@@ -55,9 +57,9 @@ function Comments(props) {
 					alert(error);
 				});
 		}
-	},[]);
+	});
 
-	const updateComment = useCallback((text, commentId) => {
+	const updateComment = (text, commentId) => {
 		axios
 			.put(
 				`https://dummyapi.io/data/v1/post/${commentId}`,
@@ -83,7 +85,7 @@ function Comments(props) {
 			.catch((error) => {
 				alert(error);
 			});
-	}, []);
+	};
 
 	useEffect(async () => {
 		await axios
@@ -98,7 +100,14 @@ function Comments(props) {
 	}, []);
 
 	return (
-		<div className={classes.commentsWrapper}>
+		
+		<div className={classes.commentsWrapper} id='comments'>
+			<Typography variant='h1' align='center' className={classes.title}>
+				COMMENTS
+			</Typography>
+			<Divider className={classes.divider}
+				variant='middle'
+			/>
 			<Box className={classes.comments}>
 				{backendComments.map((comment) => (
 					<Comment

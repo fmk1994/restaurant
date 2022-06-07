@@ -43,7 +43,7 @@ function Comment(props) {
 				/>
 			)}
 			<div className={classes.commentActions}>
-				{canEdit && (
+				{canEdit && !isEditing && (
 					<Button
 						className={classes.actionButton}
 						onClick={() => setActiveComment(comment)}
@@ -51,7 +51,7 @@ function Comment(props) {
 						Edit
 					</Button>
 				)}
-				{canDelete && (
+				{canDelete && !isEditing && (
 					<Button
 						className={classes.actionButton}
 						onClick={() => deleteComment(comment.id)}

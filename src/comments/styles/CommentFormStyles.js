@@ -1,4 +1,4 @@
-const styles = {
+const styles = () => ({
 	form: {
 		display: 'flex',
 		flexDirection: 'column',
@@ -7,6 +7,7 @@ const styles = {
 
 	textField: {
 		width: '100%',
+
 	},
 
 	formButton: {
@@ -17,11 +18,13 @@ const styles = {
 			height: '2rem',
 			fontSize: '0.8rem',
 			margin: '0.5rem 0.5rem',
+		
 		},
 	},
 	nameInput: {
 		width: '10rem',
+	
 	},
-};
+});
 
 export default styles;

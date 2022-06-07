@@ -96,7 +96,7 @@ function AboutUs(props) {
 					onClose={handleClose}
 					aria-describedby='alert-dialog-slide-description'
 				>
-					<DialogTitle>{aboutUsItemData[buttonIndex].dialogTitle}</DialogTitle>
+					<DialogTitle className={classes.dialogTitle}>{aboutUsItemData[buttonIndex].dialogTitle}</DialogTitle>
 					<DialogContent className={classes.DialogContent}>
 						<Box
 							className={classes.dialogPhoto}

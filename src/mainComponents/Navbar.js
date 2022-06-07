@@ -15,7 +15,7 @@ import Popper from '@mui/material/Popover';
 import OrderDetails from './OrderDetails';
 import { Link, animateScroll as scroll } from 'react-scroll';
 
-const pages = ['Menu', 'About Us', 'Gallery', 'Contact'];
+const pages = ['Menu', 'About Us', 'Gallery', 'Comments', 'Contact'];
 
 function Navbar(props) {
 	const { classes } = props;

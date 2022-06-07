@@ -6,8 +6,35 @@ const styles = (theme) => ({
 		justifyContent: 'center',
 		alignItems: 'center',
 		overflow: 'hidden',
-		marginTop: '10rem',
-		marginBottom: '10rem',
+		margin: '75px 70px 10rem 0',
+		paddingTop: '75px',
+		[theme.breakpoints.down('md')]: {
+			margin: 0,
+		},
+	},
+	divider: {
+		'&.MuiDivider-root': {
+			width: '50vw',
+			backgroundColor: 'brown',
+			marginBottom: '5rem',
+			[theme.breakpoints.down('sm')]: {
+				margin: '2rem',
+			},
+		},
+	},
+	title: {
+		'&.MuiTypography-root': {
+			letterSpacing: '0.5rem',
+			[theme.breakpoints.down('xxl')]: {
+				fontSize: '4rem',
+			},
+			[theme.breakpoints.down('xl')]: {
+				fontSize: '3rem',
+			},
+			[theme.breakpoints.down('md')]: {
+				fontSize: '2rem',
+			},
+		},
 	},
 	comments: {
 		overflowY: 'hidden',

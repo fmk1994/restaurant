@@ -12,6 +12,9 @@ const styles = (theme) => ({
 			margin: 0,
 			marginTop: '75px',
 		},
+		[theme.breakpoints.down('sm')]:{
+			width:"95vw"
+		},
 	},
 	title: {
 		'&.MuiTypography-root': {
@@ -19,6 +22,7 @@ const styles = (theme) => ({
 			[theme.breakpoints.up('xs')]: { fontSize: '2.5rem' },
 			[theme.breakpoints.up('md')]: { fontSize: '3rem' },
 			[theme.breakpoints.up('xl')]: { fontSize: '4rem' },
+			
 		},
 	},
 	divider: {
@@ -72,10 +76,11 @@ const styles = (theme) => ({
 			margin: 0,
 		},
 		[theme.breakpoints.down('sm')]: {
-			width: '450px',
-			height: '450px',
+			width: '100vw',
 		},
+		
 	},
+	
 	textArea: {
 		'&.MuiTypography-root': {
 			display: 'flex',
@@ -95,6 +100,9 @@ const styles = (theme) => ({
 			[theme.breakpoints.down('md')]: {
 				width: '450px',
 				height: '450px',
+			},
+			[theme.breakpoints.down('sm')]: {
+				width: '90vw',
 			},
 		},
 	},
@@ -117,6 +125,14 @@ const styles = (theme) => ({
 		display: 'flex',
 		justifyContent: 'center',
 		overflowX: 'hidden',
+		[theme.breakpoints.down('sm')]: {
+			margin:"0 0.25rem"
+		},
+	},
+	dialogTitle:{
+		'&.MuiTypography-root': {
+		margin:"0 0.5rem"
+	},
 	},
 
 	dialogPhoto: {
@@ -142,7 +158,7 @@ const styles = (theme) => ({
 			height: '480px',
 		},
 		[theme.breakpoints.down('sm')]: {
-			width: '480px',
+			width: '100vw',
 			height: '320px',
 		},
 	},
@@ -153,6 +169,11 @@ const styles = (theme) => ({
 		alignItems: 'center',
 		fontSize: '18px',
 		color: 'black',
+		[theme.breakpoints.down('sm')]: {
+			textAlign:"center",
+			width: '95%',
+			margin:"0 0.25rem"
+		},
 	},
 });
 export default styles;

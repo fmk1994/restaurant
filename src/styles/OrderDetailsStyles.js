@@ -81,7 +81,11 @@ const styles = (theme) => ({
 			transform: 'scale(1.5)',
 			cursor: 'pointer',
 		},
+		[theme.breakpoints.down('sm')]: {
+			margin: '1rem 3rem 1rem 3rem',
+			},
 	},
+	
 	basketIcon: {
 		width: '20px',
 		height: '20px',
