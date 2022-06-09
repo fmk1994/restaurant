@@ -9,7 +9,6 @@ import { TotalPriceContext } from '../../contexts/TotalPriceContext';
 function Total(props) {
 	const { classes } = props;
 	const [items] = useContext(MenuContext);
-
 	const { totalPrice, setTotalPrice } = useContext(TotalPriceContext);
 	useEffect(() => {
 		const totalPrice = Object.keys(items).reduce((acc, curr) => {

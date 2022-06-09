@@ -13,15 +13,17 @@ import { TotalPriceContextProvider } from '../contexts/TotalPriceContext';
 import { MenuProvider } from '../contexts/MenuContext';
 import { withStyles } from '@mui/styles';
 import styles from '../styles/AppStyles';
-
+// import Words from '../menu/menuComponents/Words';
 function App(props) {
 	const {classes} = props;
 	return (
 
 		<ThemeProvider theme={theme}>
 			<MenuProvider>
-				<main className={classes.main}>
-					<TotalPriceContextProvider>
+				
+<main className={classes.main}>
+{/* <Words/> */}
+<TotalPriceContextProvider>
 					<Navbar />
 						<Start />
 						<Menu />
@@ -31,7 +33,7 @@ function App(props) {
 						<Contact />
 						<Footer />
 					</TotalPriceContextProvider>
-				</main>
+				</main> 
 			</MenuProvider>
 		</ThemeProvider>
 	)

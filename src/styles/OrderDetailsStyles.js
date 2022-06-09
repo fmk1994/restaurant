@@ -117,9 +117,18 @@ const styles = (theme) => ({
 		},
 	},
 
-	buttonDisabled:{
-		
-	},
+orderNames:{
+	display:"flex",
+	flexDirection:"row",
+	justifyContent:"flex-start",
+	
+},
+orderNamesRows:{
+
+	display:"flex",
+	flexDirection:"column",
+	listStyle:"none",
+},
 
 });
 

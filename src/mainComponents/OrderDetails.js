@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useCallback } from 'react';
+import React, { useContext, useState, useEffect, useCallback} from 'react';
 import { withStyles } from '@mui/styles';
 import styles from '../styles/OrderDetailsStyles';
 import { InputLabel } from '@mui/material';
@@ -19,6 +19,8 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { TotalPriceContext } from '../contexts/TotalPriceContext';
 import { MenuContext } from '../contexts/MenuContext';
 import { Radio } from '@mui/material';
+// import { List } from '@mui/material';
+// import { ListItemText } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import basketIcon from '../pictures/shoppingbasket.jpg';
 import cookingImg from '../pictures/cooking.png';
@@ -33,7 +35,6 @@ function OrderDetails(props) {
 		firstName: '',
 		lastName: '',
 		paymentMethod: '',
-		order: '',
 	});
 
 	const { classes } = props;
@@ -45,23 +46,66 @@ function OrderDetails(props) {
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [open, setOpen] = useState(false);
+	const [orderNames, setOrderNames] = useState('');
+	// const [uniqueOrderNames, setUniqueOrderNames] = useState(orderNames);
 	const [openThanksPage, setOpenThanksPage] = useState(false);
 	const theme = useTheme();
 	const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
-
 	const { totalPrice } = useContext(TotalPriceContext);
 	const [items] = useContext(MenuContext);
-	let orderedItems = Object.entries(items).map((item) => {
-		return item;
-		
+	const names = [];
+	const index = [];
+	let dishesArray = [];
+
+	data.mains.map((mainDish) => {
+		const mainNames = mainDish.name;
+		const mainsIndex = mainDish.index;
+		names.push(mainNames);
+		index.push(mainsIndex);
 	});
-	console.dir(data)
-	orderedItems.map((array)=>{
-		if(array[1]!==0){
-			return(array[0])
-		}
+	data.drinks.map((drink) => {
+		const drinkNames = drink.name;
+		const drinkIndex = drink.index;
+		names.push(drinkNames);
+		index.push(drinkIndex);
+	});
+	data.sides.map((side) => {
+		const sideNames = side.name;
+		const sideIndex = side.index;
+		names.push(sideNames);
+		index.push(sideIndex);
 	});
 
+	for (const [key, value] of Object.entries(items)) {
+		if (value !== 0) {
+			let dish = `${key}`;
+			dishesArray.push(dish);
+		}
+	}
+
+	function handleOrderNames() {
+		if (dishesArray.length === 0) {
+			return null;
+		} else {
+			dishesArray.forEach((element) => {
+				setOrderNames([...orderNames, names[index.indexOf(element)]]);
+				// let uniqueOrderNames = [...new Set(orderNames)];
+				// setUniqueOrderNames(uniqueOrderNames);
+			});
+		}
+	}
+	const mealsCounter = new Object();
+	for (let i = 0; i < orderNames.length; i++) {
+		if (mealsCounter[orderNames[i]] != null) {
+			mealsCounter[orderNames[i]] += 1;
+		} else {
+			mealsCounter[orderNames[i]] = 1;
+		}
+
+	}
+	useEffect(() => {
+		handleOrderNames();
+	}, [items]);
 
 	const handleOpen = useCallback(() => {
 		setOpen(true);
@@ -72,13 +116,12 @@ function OrderDetails(props) {
 		setOpenThanksPage(false);
 	}, []);
 
-	const handleThanksPage = useCallback(() => {
+	const handleThanksPage = () => {
 		setTimeout(() => {
 			setOpen(false);
 			setOpenThanksPage(true);
 		}, 1000);
-	}, []);
-
+	};
 	const handleSubmit = useCallback(
 		(e) => {
 			e.preventDefault();
@@ -89,10 +132,8 @@ function OrderDetails(props) {
 				firstName,
 				lastName,
 				paymentMethod,
-				
 			});
 			console.log(JSON.stringify(formData));
-
 			handleThanksPage();
 		},
 		[formData]
@@ -105,9 +146,9 @@ function OrderDetails(props) {
 			firstName,
 			lastName,
 			paymentMethod,
-			
 		});
 	}, [deliveryMethod, adress, number, firstName, lastName, paymentMethod]);
+	
 	return (
 		<div>
 			<Box className={classes.basket} onClick={handleOpen}>
@@ -158,7 +199,7 @@ function OrderDetails(props) {
 										value='delivery'
 										className={classes.button}
 										label='delivery'
-										control={<Radio />}
+										control={<Radio color='secondary' size='small' />}
 									>
 										Delivery
 									</FormControlLabel>
@@ -166,7 +207,7 @@ function OrderDetails(props) {
 										value='pick-up'
 										className={classes.button}
 										label='pick-up'
-										control={<Radio />}
+										control={<Radio color='secondary' size='small' />}
 									>
 										Pick up
 									</FormControlLabel>
@@ -241,7 +282,7 @@ function OrderDetails(props) {
 										value='cash'
 										className={classes.button}
 										label='cash'
-										control={<Radio />}
+										control={<Radio color='secondary' size='small' />}
 									>
 										Cash
 									</FormControlLabel>
@@ -249,7 +290,7 @@ function OrderDetails(props) {
 										value='card'
 										className={classes.button}
 										label='card'
-										control={<Radio />}
+										control={<Radio color='secondary' size='small' />}
 									>
 										Card
 									</FormControlLabel>
@@ -275,9 +316,20 @@ function OrderDetails(props) {
 					{`Thank you for the order!`}
 				</DialogTitle>
 				<DialogContent className={classes.thankYouDialogContent}>
-					<DialogContentText>
-						{`You've ordered ${orderedItems}`}
-					</DialogContentText>
+				{`You've ordered:`} 
+					<div className={classes.orderNames}>
+						
+						<ul className={classes.orderNamesRows}>
+						{Object.keys(mealsCounter).map((key)=>{
+							return <li key={key}>{key}</li>
+						})}
+						</ul>
+						<ul className={classes.orderNamesRows}>
+						{Object.values(mealsCounter).map((value)=>{
+							return <li key={value}>{`x ${value}`}</li>
+						})}
+						</ul>
+					</div>
 					<DialogContentText>
 						{'Estimated delivery/pick up time 30-60 min.'}
 					</DialogContentText>
@@ -291,34 +343,3 @@ function OrderDetails(props) {
 	);
 }
 export default withStyles(styles)(OrderDetails);
-// function contains(a, obj) {
-// 	for (var i = 0; i < a.length; i++) {
-// 		if (a[i] === obj) {
-// 			return true;
-// 		}
-// 	}
-// 	return false;
-// }
-// 	console.log(items)
-// 	let itemss = Object.keys(items).map((item)=>{return item})
-// console.log(itemss);
-// console.log(arrayOfNames)
-// const item = itemss.map((item)=>{
-// 	console.log(item);
-// 	return item;
-
-// });
-// arrayOfNames.forEach((name)=>{
-// 	console.log(name)
-// })
-
-// let arrayOfNames=[];
-// Object.values(data).forEach((value)=>{
-// 	value.map((meal)=>{
-// 		const obj = {};
-// 		const name = meal.name;
-// 		obj[`${meal.index}`] = name;
-// 		arrayOfNames.push(obj);
-
-// 	})
-// });
