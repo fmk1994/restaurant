@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "rootDir":"./src",
+        "outDir":"./dist",
+        "allowJs": true,
+        "target":"ES6",
+        "allowSyntheticDefaultImports": true,
+          }
+    }

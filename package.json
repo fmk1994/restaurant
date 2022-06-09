@@ -41,7 +41,7 @@
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "compile":"tsc",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js"
   },
