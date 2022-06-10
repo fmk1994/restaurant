@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/restaurant/static/css/main.e3bc475e.css",
-    "main.js": "/restaurant/static/js/main.e8e7cde2.js",
+    "main.js": "/restaurant/static/js/main.d6434f91.js",
     "static/js/787.0c209702.chunk.js": "/restaurant/static/js/787.0c209702.chunk.js",
     "static/media/pic1.png": "/restaurant/static/media/pic1.22e739449fac18b94b33.png",
     "static/media/sebastian-coman.jpg": "/restaurant/static/media/sebastian-coman.c71ba26f386089e2146b.jpg",
@@ -22,11 +22,11 @@
     "static/media/empty-cart.png": "/restaurant/static/media/empty-cart.bb5a8f211549e6a6e68d.png",
     "index.html": "/restaurant/index.html",
     "main.e3bc475e.css.map": "/restaurant/static/css/main.e3bc475e.css.map",
-    "main.e8e7cde2.js.map": "/restaurant/static/js/main.e8e7cde2.js.map",
+    "main.d6434f91.js.map": "/restaurant/static/js/main.d6434f91.js.map",
     "787.0c209702.chunk.js.map": "/restaurant/static/js/787.0c209702.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e3bc475e.css",
-    "static/js/main.e8e7cde2.js"
+    "static/js/main.d6434f91.js"
   ]
 }
