@@ -14,7 +14,7 @@
 "include": [
     "src/**/*.ts",
     "src/**/*.tsx"
-, "src/comments/styles/CommentStyles.js", "src/comments/Comment.js"],
+, "src/comments/styles/CommentStyles.js", "src/comments/Comment.js", "src/mainComponents/Footer.js"],
 "exclude": [
     "node_modules",
     "**/__mocks__",
