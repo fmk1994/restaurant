@@ -8,7 +8,7 @@ function Map() {
 	const lng = 18.54089994059017;
 	const lat = 54.49652748850018;
 	const zoom = 14;
-	const API_KEY = 'zvAseNUVgfAQxTfKL64O';
+	const API_KEY = 'hglNjn4Gb9LgF2YUtiaW';
 
 	useEffect(() => {
 		if (map.current) return; 

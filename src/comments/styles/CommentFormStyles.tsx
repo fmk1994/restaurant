@@ -1,4 +1,6 @@
-const styles = () => ({
+import { CSSProperties } from "@mui/styled-engine";
+import { Styles } from "@mui/styles";
+const styles:Styles<string,CSSProperties> = {
 	form: {
 		display: 'flex',
 		flexDirection: 'column',
@@ -25,6 +27,6 @@ const styles = () => ({
 		width: '10rem',
 	
 	},
-});
+};
 
 export default styles;

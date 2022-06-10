@@ -7,7 +7,7 @@ import { Button } from '@mui/material';
 import { Input } from '@mui/material';
 import { InputLabel } from '@mui/material';
 import { FormControl } from '@mui/material';
-function CommentForm(props) {
+function CommentForm(props:any) {
 	const {
 		classes,
 		handleSubmit,

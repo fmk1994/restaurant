@@ -1,0 +1,25 @@
+{
+"compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "target":"ES5",
+    "allowJs": true,
+    "jsx":"react",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "Node",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true
+},
+"include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+, "src/comments/styles/CommentStyles.js", "src/comments/Comment.js"],
+"exclude": [
+    "node_modules",
+    "**/__mocks__",
+    "dist",
+    "*/.test.ts",
+    "*/.test.tsx"
+]
+}

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useCallback} from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { withStyles } from '@mui/styles';
 import styles from '../styles/OrderDetailsStyles';
 import { InputLabel } from '@mui/material';
@@ -19,8 +19,6 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { TotalPriceContext } from '../contexts/TotalPriceContext';
 import { MenuContext } from '../contexts/MenuContext';
 import { Radio } from '@mui/material';
-// import { List } from '@mui/material';
-// import { ListItemText } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import basketIcon from '../pictures/shoppingbasket.jpg';
 import cookingImg from '../pictures/cooking.png';
@@ -47,7 +45,6 @@ function OrderDetails(props) {
 	const [lastName, setLastName] = useState('');
 	const [open, setOpen] = useState(false);
 	const [orderNames, setOrderNames] = useState('');
-	// const [uniqueOrderNames, setUniqueOrderNames] = useState(orderNames);
 	const [openThanksPage, setOpenThanksPage] = useState(false);
 	const theme = useTheme();
 	const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
@@ -56,24 +53,20 @@ function OrderDetails(props) {
 	const names = [];
 	const index = [];
 	let dishesArray = [];
+const {mains, drinks, sides} = data;
 
-	data.mains.map((mainDish) => {
-		const mainNames = mainDish.name;
-		const mainsIndex = mainDish.index;
-		names.push(mainNames);
-		index.push(mainsIndex);
+
+	mains.map((name) => {
+		names.push(name.name);
+		index.push(name.index);
 	});
-	data.drinks.map((drink) => {
-		const drinkNames = drink.name;
-		const drinkIndex = drink.index;
-		names.push(drinkNames);
-		index.push(drinkIndex);
+	drinks.map((name) => {
+		names.push(name.name);
+		index.push(name.index);
 	});
-	data.sides.map((side) => {
-		const sideNames = side.name;
-		const sideIndex = side.index;
-		names.push(sideNames);
-		index.push(sideIndex);
+	sides.map((name) => {
+		names.push(name.name);
+		index.push(name.index);
 	});
 
 	for (const [key, value] of Object.entries(items)) {
@@ -89,8 +82,6 @@ function OrderDetails(props) {
 		} else {
 			dishesArray.forEach((element) => {
 				setOrderNames([...orderNames, names[index.indexOf(element)]]);
-				// let uniqueOrderNames = [...new Set(orderNames)];
-				// setUniqueOrderNames(uniqueOrderNames);
 			});
 		}
 	}
@@ -101,7 +92,6 @@ function OrderDetails(props) {
 		} else {
 			mealsCounter[orderNames[i]] = 1;
 		}
-
 	}
 	useEffect(() => {
 		handleOrderNames();
@@ -148,7 +138,7 @@ function OrderDetails(props) {
 			paymentMethod,
 		});
 	}, [deliveryMethod, adress, number, firstName, lastName, paymentMethod]);
-	
+
 	return (
 		<div>
 			<Box className={classes.basket} onClick={handleOpen}>
@@ -316,18 +306,17 @@ function OrderDetails(props) {
 					{`Thank you for the order!`}
 				</DialogTitle>
 				<DialogContent className={classes.thankYouDialogContent}>
-				{`You've ordered:`} 
+					{`You've ordered:`}
 					<div className={classes.orderNames}>
-						
 						<ul className={classes.orderNamesRows}>
-						{Object.keys(mealsCounter).map((key)=>{
-							return <li key={key}>{key}</li>
-						})}
+							{Object.keys(mealsCounter).map((key) => {
+								return <li key={key}>{key}</li>;
+							})}
 						</ul>
 						<ul className={classes.orderNamesRows}>
-						{Object.values(mealsCounter).map((value)=>{
-							return <li key={value}>{`x ${value}`}</li>
-						})}
+							{Object.values(mealsCounter).map((value) => {
+								return <li key={value}>{`x ${value}`}</li>;
+							})}
 						</ul>
 					</div>
 					<DialogContentText>

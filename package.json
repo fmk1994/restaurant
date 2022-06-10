@@ -42,6 +42,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "compile": "tsc",
+    "type-check": "tsc --noEmit",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js"
   },
@@ -64,6 +66,8 @@
     ]
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/parser": "^5.27.1",
     "eslint": "^8.16.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
