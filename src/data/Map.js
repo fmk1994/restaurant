@@ -1,8 +1,10 @@
 import React, { useRef, useEffect} from 'react';
-import maplibregl from 'maplibre-gl';
+import maplibregl from '!maplibre-gl';
+import maplibreglWorker from 'maplibre-gl/dist/maplibre-gl-csp-worker';
 import '../styles/map.css';
 
 function Map() {
+	maplibregl.workerClass = maplibreglWorker
 	const mapContainer = useRef(null);
 	const map = useRef(null);
 	const lng = 18.54089994059017;
