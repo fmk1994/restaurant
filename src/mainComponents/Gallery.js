@@ -14,14 +14,14 @@ function Gallery(props) {
 	const handleClick = useCallback((e, index) => {
 		if (e.target.className.includes('active')) {
 			setToggleActive(!toggleActive);
-			setIndex(index);
+			setIndex('');
 			console.dir(e.target);
 		} else {
 			setIndex(index);
 			console.dir(e.target);
 		}
 	},[]);
-
+console.log(toggleActive)
 	return (
 		<div className={classes.gallery} id='gallery'>
 			<div className={classes.title}>
@@ -51,8 +51,7 @@ function Gallery(props) {
 					id={item.img}
 					className={`${classes.panel}
 							${
-								(photoIndex === index && classes.active) ||
-								(toggleActive && classes.active)
+								(photoIndex === index && classes.active)
 							}`}
 					style={{ backgroundImage: `url(${item.img})` }}
 					alt={item.title}

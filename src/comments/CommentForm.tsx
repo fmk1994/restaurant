@@ -1,5 +1,5 @@
-import React, {useState, useCallback } from 'react';
-import { withStyles } from '@mui/styles';
+import React, {useState, useCallback, FormEvent} from 'react';
+import {withStyles} from '@mui/styles';
 import styles from './styles/CommentFormStyles';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -7,20 +7,23 @@ import { Button } from '@mui/material';
 import { Input } from '@mui/material';
 import { InputLabel } from '@mui/material';
 import { FormControl } from '@mui/material';
-function CommentForm(props:any) {
-	const {
-		classes,
-		handleSubmit,
-		submitLabel,
-		hasCancelButton = false,
-		initialText = '',
-		handleCancel,
-	} = props;
-	const [text, setText] = useState(initialText);
-	const [username, setUsername] = useState('');
+
+type CommentFormProps = {
+	classes: Record<string, string>;
+	handleSubmit: (text: string, username: string) => void;
+	submitLabel: string;
+	hasCancelButton: boolean;
+	initialText: string;
+	handleCancel: () => void;
+};
+
+const CommentForm: React.FC<CommentFormProps> = ({classes, handleSubmit, submitLabel, hasCancelButton = false, initialText = '', handleCancel}: CommentFormProps) => {
+
+	const [text, setText] = useState<string>(initialText);
+	const [username, setUsername] = useState<string>('');
 	const isSubmitButtonDisabled = text.length === 0;
 	
-		const onSubmit = useCallback((event) => {
+		const onSubmit = useCallback((event: FormEvent) => {
 			event.preventDefault();
 			handleSubmit(text, username);
 			setText('');
