@@ -12,7 +12,7 @@ const Gallery: React.FC<GalleryProps> = ({ classes }: GalleryProps) => {
 	const [toggleActive, setToggleActive] = useState(false);
 
 	const handleClick = useCallback(
-		(e: React.MouseEvent<Element, MouseEvent>, index: number) => {
+		(e: React.MouseEvent<Element, MouseEvent>, index: number | undefined) => {
 			if ((e.target as Element).className.includes('active')) {
 				setToggleActive(!toggleActive);
 				setIndex(undefined);
