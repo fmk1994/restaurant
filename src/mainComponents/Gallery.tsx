@@ -8,7 +8,7 @@ type GalleryProps = {
 	classes: Record<string, string>;
 };
 const Gallery: React.FC<GalleryProps> = ({ classes }: GalleryProps) => {
-	const [photoIndex, setIndex] = useState<number>();
+	const [photoIndex, setIndex] = useState<number | undefined>();
 	const [toggleActive, setToggleActive] = useState(false);
 
 	const handleClick = useCallback(
