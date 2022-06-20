@@ -5,6 +5,7 @@ var styles = {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-around',
+        letterSpacing: "0"
     },
     textField: {
         width: '100%',
