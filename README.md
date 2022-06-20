@@ -15,7 +15,7 @@ The Contact section uses open-source mapping library - MapLibre.
 
 
 ***
-The app is still under development. All changes are added to project repository.  
+The app is still under development. All changes are being added to project repository.  
 The main current goal is to expand app with TypeScript.  
 
 ---
