@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.css": "/restaurant/static/css/main.e3bc475e.css",
-    "main.js": "/restaurant/static/js/main.a78fdf23.js",
+    "main.css": "/restaurant/static/css/main.ff0945bd.css",
+    "main.js": "/restaurant/static/js/main.2ab537d5.js",
     "static/js/787.0c209702.chunk.js": "/restaurant/static/js/787.0c209702.chunk.js",
     "static/media/pic1.png": "/restaurant/static/media/pic1.22e739449fac18b94b33.png",
+    "static/media/placeOpenedPhoto.jpg": "/restaurant/static/media/placeOpenedPhoto.7cdbff7354716be4cfb9.jpg",
     "static/media/sebastian-coman.jpg": "/restaurant/static/media/sebastian-coman.c71ba26f386089e2146b.jpg",
-    "static/media/teamOpenedPhoto.jpg": "/restaurant/static/media/teamOpenedPhoto.0a667f0d2a649f1a9081.jpg",
-    "static/media/placeOpenedPhoto.jpg": "/restaurant/static/media/placeOpenedPhoto.9803c34bd080a228d4e0.jpg",
+    "static/media/teamOpenedPhoto.jpg": "/restaurant/static/media/teamOpenedPhoto.67031bfa19d051dc2b4e.jpg",
     "static/media/steven-pecoraro.jpg": "/restaurant/static/media/steven-pecoraro.2f5a3ac954398e0ada12.jpg",
     "static/media/pic8.jpg": "/restaurant/static/media/pic8.e39becfa10bea8ea9c1f.jpg",
     "static/media/pic9.jpg": "/restaurant/static/media/pic9.fa57ca74597b6737a2b6.jpg",
@@ -21,12 +21,12 @@
     "static/media/ikona.png": "/restaurant/static/media/ikona.61f93f7f0f4df060e46f.png",
     "static/media/empty-cart.png": "/restaurant/static/media/empty-cart.bb5a8f211549e6a6e68d.png",
     "index.html": "/restaurant/index.html",
-    "main.e3bc475e.css.map": "/restaurant/static/css/main.e3bc475e.css.map",
-    "main.a78fdf23.js.map": "/restaurant/static/js/main.a78fdf23.js.map",
+    "main.ff0945bd.css.map": "/restaurant/static/css/main.ff0945bd.css.map",
+    "main.2ab537d5.js.map": "/restaurant/static/js/main.2ab537d5.js.map",
     "787.0c209702.chunk.js.map": "/restaurant/static/js/787.0c209702.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e3bc475e.css",
-    "static/js/main.a78fdf23.js"
+    "static/css/main.ff0945bd.css",
+    "static/js/main.2ab537d5.js"
   ]
 }
