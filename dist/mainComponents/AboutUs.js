@@ -27,7 +27,7 @@ var Transition = (0, react_1.forwardRef)(function Transition(props, ref) {
 function AboutUs(props) {
     var classes = props.classes;
     var _a = (0, react_1.useState)(false), open = _a[0], setOpen = _a[1];
-    var _b = (react_1.useState < 0) | (1 > 0), buttonIndex = _b[0], setButtonIndex = _b[1];
+    var _b = (0, react_1.useState)(null), buttonIndex = _b[0], setButtonIndex = _b[1];
     (0, react_1.useEffect)(function () {
         setButtonIndex(buttonIndex);
     }, [buttonIndex]);
@@ -52,7 +52,7 @@ function AboutUs(props) {
                     react_1.default.createElement(Typography_1.default, { className: classes.textArea, align: 'center', variant: 'body1', paragraph: true }, aboutUsItemData_1.aboutUsTextFill[0].TeamText)),
                 react_1.default.createElement(material_2.Box, { className: classes.gridFourth },
                     react_1.default.createElement(Typography_1.default, { className: classes.textArea, align: 'center', variant: 'body1', paragraph: true }, aboutUsItemData_1.aboutUsTextFill[1].PlaceText))),
-            react_1.default.createElement(Dialog_1.default, { id: buttonIndex.toString(), fullWidth: true, maxWidth: 'xl', className: classes.dialog, open: open, TransitionComponent: Transition, keepMounted: true, onClose: handleClose, "aria-describedby": 'dialog-slide-about-us' },
+            react_1.default.createElement(Dialog_1.default, { id: buttonIndex, fullWidth: true, maxWidth: 'xl', className: classes.dialog, open: open, TransitionComponent: Transition, keepMounted: true, onClose: handleClose, "aria-describedby": 'dialog-slide-about-us' },
                 react_1.default.createElement(DialogContent_1.default, { className: classes.dialogContent, sx: {
                         backgroundImage: "url(".concat(aboutUsItemData_1.aboutUsItemData[buttonIndex].dialogPhoto, ")"),
                     } }),
