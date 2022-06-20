@@ -27,7 +27,7 @@ var Transition = (0, react_1.forwardRef)(function Transition(props, ref) {
 function AboutUs(props) {
     var classes = props.classes;
     var _a = (0, react_1.useState)(false), open = _a[0], setOpen = _a[1];
-    var _b = (0, react_1.useState)(null), buttonIndex = _b[0], setButtonIndex = _b[1];
+    var _b = (0, react_1.useState)(0), buttonIndex = _b[0], setButtonIndex = _b[1];
     (0, react_1.useEffect)(function () {
         setButtonIndex(buttonIndex);
     }, [buttonIndex]);

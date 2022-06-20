@@ -87,6 +87,9 @@ function OrderDetails(props) {
         names.push(name.name);
         index.push(name.index);
     });
+    var mealsCounter = Object.values(items).filter(function (number) {
+        return number > 0;
+    });
     for (var _i = 0, _l = Object.entries(items); _i < _l.length; _i++) {
         var _m = _l[_i], key = _m[0], value = _m[1];
         if (value !== 0) {
@@ -109,9 +112,6 @@ function OrderDetails(props) {
             });
         }
     }
-    var mealsCounter = Object.values(items).filter(function (number) {
-        return number > 0;
-    });
     (0, react_1.useEffect)(function () {
         handleOrderNames();
     }, [items]);
@@ -138,11 +138,15 @@ function OrderDetails(props) {
             lastName: lastName,
             paymentMethod: paymentMethod,
         });
+        var dishesObject = {};
+        orderNames.forEach(function (element, index) {
+            dishesObject[element] = mealsCounter[index];
+        });
         handleThanksPage();
         setTimeout(function () {
             alert(JSON.stringify(__assign(__assign({}, formData), dishesObject)));
         }, 1500);
-    }, [formData]);
+    }, [formData, orderNames]);
     (0, react_1.useEffect)(function () {
         setFormData({
             deliveryMethod: deliveryMethod,
@@ -153,10 +157,6 @@ function OrderDetails(props) {
             paymentMethod: paymentMethod,
         });
     }, [deliveryMethod, adress, number, firstName, lastName, paymentMethod]);
-    var dishesObject = {};
-    orderNames.forEach(function (element, index) {
-        dishesObject[element] = mealsCounter[index];
-    });
     return (react_1.default.createElement("div", null,
         react_1.default.createElement(Box_1.default, { className: classes.basket, onClick: handleOpen },
             react_1.default.createElement("img", { className: classes.basketIcon, src: shoppingbasket_jpg_1.default }),
