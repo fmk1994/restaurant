@@ -16,7 +16,7 @@ const Transition = forwardRef(function Transition(props, ref) {
 function AboutUs(props) {
 	const { classes } = props;
 	const [open, setOpen] = useState(false);
-	const [buttonIndex, setButtonIndex] = (useState < 0) | (1 > 0);
+	const [buttonIndex, setButtonIndex] = useState(null);
 	useEffect(() => {
 		setButtonIndex(buttonIndex);
 	}, [buttonIndex]);
@@ -84,7 +84,7 @@ function AboutUs(props) {
 				</div>
 
 				<Dialog
-					id={buttonIndex.toString()}
+					id={buttonIndex}
 					fullWidth
 					maxWidth={'xl'}
 					className={classes.dialog}
