@@ -1,9 +1,11 @@
-import React, { useRef, useEffect} from 'react';
+import React, { useRef, useEffect } from 'react';
 import maplibregl from '!maplibre-gl';
 import maplibreglWorker from 'maplibre-gl/dist/maplibre-gl-csp-worker';
-import '../styles/map.css';
-maplibregl.workerClass = maplibreglWorker
-function Map() {
+import { withStyles } from '@mui/styles';
+import styles from '../styles/MapStyles';
+maplibregl.workerClass = maplibreglWorker;
+function Map(props) {
+	const { classes } = props;
 	const mapContainer = useRef(null);
 	const map = useRef(null);
 	const lng = 18.54089994059017;
@@ -12,9 +14,8 @@ function Map() {
 	const API_KEY = 'hglNjn4Gb9LgF2YUtiaW';
 
 	useEffect(() => {
-		if (map.current) return; 
-		map.current = new maplibregl.Map(
-			{
+		if (map.current) return;
+		map.current = new maplibregl.Map({
 			container: mapContainer.current,
 			style: `https://api.maptiler.com/maps/streets/style.json?key=${API_KEY}`,
 			center: [lng, lat],
@@ -27,10 +28,10 @@ function Map() {
 	});
 
 	return (
-		<div className='map-wrap'>
-			<div ref={mapContainer} className='map' />
+		<div className={classes.mapWrap}>
+			<div ref={mapContainer} className={classes.map} />
 		</div>
 	);
 }
 
-export default Map;
+export default withStyles(styles)(Map);

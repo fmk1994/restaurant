@@ -1,5 +1,5 @@
-import React, {useState, useCallback, FormEvent} from 'react';
-import {withStyles} from '@mui/styles';
+import React, { useState, useCallback, FormEvent } from 'react';
+import { withStyles } from '@mui/styles';
 import styles from './styles/CommentFormStyles';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -17,19 +17,28 @@ type CommentFormProps = {
 	handleCancel: () => void;
 };
 
-const CommentForm: React.FC<CommentFormProps> = ({classes, handleSubmit, submitLabel, hasCancelButton = false, initialText = '', handleCancel}: CommentFormProps) => {
-
+const CommentForm: React.FC<CommentFormProps> = ({
+	classes,
+	handleSubmit,
+	submitLabel,
+	hasCancelButton = false,
+	initialText = '',
+	handleCancel,
+}: CommentFormProps) => {
 	const [text, setText] = useState<string>(initialText);
 	const [username, setUsername] = useState<string>('');
 	const isSubmitButtonDisabled = text.length === 0;
-	
-		const onSubmit = useCallback((event: FormEvent) => {
+
+	const onSubmit = useCallback(
+		(event: FormEvent) => {
 			event.preventDefault();
 			handleSubmit(text, username);
 			setText('');
 			setUsername('');
-	},[text,username]);
-	
+		},
+		[text, username]
+	);
+
 	return (
 		<Box>
 			<form className={classes.form} onSubmit={onSubmit}>
@@ -72,6 +81,6 @@ const CommentForm: React.FC<CommentFormProps> = ({classes, handleSubmit, submitL
 			</form>
 		</Box>
 	);
-}
+};
 
 export default withStyles(styles)(CommentForm);

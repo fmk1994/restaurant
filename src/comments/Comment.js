@@ -22,7 +22,7 @@ function Comment(props) {
 	const canDelete = currentUserId === comment.owner.id && !timePassed;
 	const publishDate = new Date(comment.publishDate).toLocaleDateString();
 	const isEditing = activeComment && activeComment.id === comment.id;
-	
+
 	return (
 		<div className={classes.comment}>
 			<div className={classes.commentData}>

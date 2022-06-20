@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { withStyles } from '@mui/styles';
 import styles from '../styles/OrderDetailsStyles';
+import { v4 as uuidv4 } from 'uuid';
 import { InputLabel } from '@mui/material';
 import { Typography } from '@mui/material';
 import { FormControlLabel } from '@mui/material';
@@ -44,17 +45,16 @@ function OrderDetails(props) {
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [open, setOpen] = useState(false);
-	const [orderNames, setOrderNames] = useState('');
+	const [orderNames, setOrderNames] = useState([]);
 	const [openThanksPage, setOpenThanksPage] = useState(false);
 	const theme = useTheme();
 	const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 	const { totalPrice } = useContext(TotalPriceContext);
 	const [items] = useContext(MenuContext);
-	const names = [];
-	const index = [];
+	let names = [];
+	let index = [];
 	let dishesArray = [];
-const {mains, drinks, sides} = data;
-
+	const { mains, drinks, sides } = data;
 
 	mains.map((name) => {
 		names.push(name.name);
@@ -75,24 +75,22 @@ const {mains, drinks, sides} = data;
 			dishesArray.push(dish);
 		}
 	}
-
 	function handleOrderNames() {
 		if (dishesArray.length === 0) {
 			return null;
 		} else {
-			dishesArray.forEach((element) => {
-				setOrderNames([...orderNames, names[index.indexOf(element)]]);
+			dishesArray.map((element) => {
+				if (orderNames.includes(names[index.indexOf(element)])) {
+					return orderNames;
+				} else {
+					setOrderNames([...orderNames, names[index.indexOf(element)]]);
+				}
 			});
 		}
 	}
-	const mealsCounter = new Object();
-	for (let i = 0; i < orderNames.length; i++) {
-		if (mealsCounter[orderNames[i]] != null) {
-			mealsCounter[orderNames[i]] += 1;
-		} else {
-			mealsCounter[orderNames[i]] = 1;
-		}
-	}
+	const mealsCounter = Object.values(items).filter((number) => {
+		return number > 0;
+	});
 	useEffect(() => {
 		handleOrderNames();
 	}, [items]);
@@ -110,7 +108,7 @@ const {mains, drinks, sides} = data;
 		setTimeout(() => {
 			setOpen(false);
 			setOpenThanksPage(true);
-		}, 1000);
+		}, 500);
 	};
 	const handleSubmit = useCallback(
 		(e) => {
@@ -123,8 +121,11 @@ const {mains, drinks, sides} = data;
 				lastName,
 				paymentMethod,
 			});
-			console.log(JSON.stringify(formData));
+
 			handleThanksPage();
+			setTimeout(() => {
+				alert(JSON.stringify({ ...formData, ...dishesObject }));
+			}, 1500);
 		},
 		[formData]
 	);
@@ -138,6 +139,11 @@ const {mains, drinks, sides} = data;
 			paymentMethod,
 		});
 	}, [deliveryMethod, adress, number, firstName, lastName, paymentMethod]);
+
+	const dishesObject = {};
+	orderNames.forEach((element, index) => {
+		dishesObject[element] = mealsCounter[index];
+	});
 
 	return (
 		<div>
@@ -309,13 +315,13 @@ const {mains, drinks, sides} = data;
 					{`You've ordered:`}
 					<div className={classes.orderNames}>
 						<ul className={classes.orderNamesRows}>
-							{Object.keys(mealsCounter).map((key) => {
+							{orderNames.map((key) => {
 								return <li key={key}>{key}</li>;
 							})}
 						</ul>
 						<ul className={classes.orderNamesRows}>
-							{Object.values(mealsCounter).map((value) => {
-								return <li key={value}>{`x ${value}`}</li>;
+							{mealsCounter.map((value) => {
+								return <li key={uuidv4()}>{`x ${value}`}</li>;
 							})}
 						</ul>
 					</div>

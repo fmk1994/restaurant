@@ -5,6 +5,7 @@ const styles:Styles<string,CSSProperties> = {
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-around',
+		letterSpacing:"0"
 	},
 
 	textField: {
@@ -25,6 +26,7 @@ const styles:Styles<string,CSSProperties> = {
 	},
 	nameInput: {
 		width: '10rem',
+		
 	
 	},
 };
