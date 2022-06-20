@@ -19,7 +19,7 @@ The app is still under development. All changes are added to project repository.
 The main current goal is to expand app with TypeScript.  
 
 ---
-All used photos are from https://unsplash.com/  
+All used photos are from: https://unsplash.com/  
 Gifs:  
 <a href="https://www.flaticon.com/free-icons/empty-cart" title="empty cart icons">Empty cart icons created by smashingstocks - Flaticon</a>  
 <a href="https://www.flaticon.com/free-icons/preparation" title="preparation icons">Preparation icons created by SBTS2018 - Flaticon</a>
