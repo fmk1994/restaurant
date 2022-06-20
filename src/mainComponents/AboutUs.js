@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { forwardRef, useState, useEffect, useCallback } from 'react';
 import { aboutUsItemData, aboutUsTextFill } from '../data/aboutUsItemData';
 import { withStyles } from '@mui/styles';
 import styles from '../styles/AboutUsStyles';
