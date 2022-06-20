@@ -16,7 +16,7 @@ const Transition = forwardRef(function Transition(props, ref) {
 function AboutUs(props) {
 	const { classes } = props;
 	const [open, setOpen] = useState(false);
-	const [buttonIndex, setButtonIndex] = useState(null);
+	const [buttonIndex, setButtonIndex] = useState('');
 	useEffect(() => {
 		setButtonIndex(buttonIndex);
 	}, [buttonIndex]);
