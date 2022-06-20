@@ -68,7 +68,9 @@ function OrderDetails(props) {
 		names.push(name.name);
 		index.push(name.index);
 	});
-
+	const mealsCounter = Object.values(items).filter((number) => {
+		return number > 0;
+	});
 	for (const [key, value] of Object.entries(items)) {
 		if (value !== 0) {
 			let dish = `${key}`;
@@ -88,9 +90,7 @@ function OrderDetails(props) {
 			});
 		}
 	}
-	const mealsCounter = Object.values(items).filter((number) => {
-		return number > 0;
-	});
+
 	useEffect(() => {
 		handleOrderNames();
 	}, [items]);
@@ -121,13 +121,16 @@ function OrderDetails(props) {
 				lastName,
 				paymentMethod,
 			});
-
+			const dishesObject = {};
+			orderNames.forEach((element, index) => {
+				dishesObject[element] = mealsCounter[index];
+			});
 			handleThanksPage();
 			setTimeout(() => {
 				alert(JSON.stringify({ ...formData, ...dishesObject }));
 			}, 1500);
 		},
-		[formData]
+		[formData, orderNames]
 	);
 	useEffect(() => {
 		setFormData({
@@ -139,11 +142,6 @@ function OrderDetails(props) {
 			paymentMethod,
 		});
 	}, [deliveryMethod, adress, number, firstName, lastName, paymentMethod]);
-
-	const dishesObject = {};
-	orderNames.forEach((element, index) => {
-		dishesObject[element] = mealsCounter[index];
-	});
 
 	return (
 		<div>
