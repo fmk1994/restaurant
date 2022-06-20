@@ -10,7 +10,7 @@ https://fmk1994.github.io/restaurant/ .
 **The App uses REST API to upload, post, edit and delete comments.**  
 
 The App is built with functional components and React Hooks.  
-Data from the reservation form and all the order details are prepared to be sent - they appear as an alert popup with JSON object.  
+Data from the reservation form and all the order details are prepared to be sent as JSON Objects - submitt to see an alert popup
 
 
 ***
