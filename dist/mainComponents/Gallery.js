@@ -10,7 +10,7 @@ var Gallery = function (_a) {
     var classes = _a.classes;
     var _b = (0, react_1.useState)(), photoIndex = _b[0], setIndex = _b[1];
     var _c = (0, react_1.useState)(false), toggleActive = _c[0], setToggleActive = _c[1];
-    var handleClick = (0, react_1.useCallback)(function (e, index) {
+    var handleClick = function (e, index) {
         if (e.target.className.includes('active')) {
             setToggleActive(!toggleActive);
             setIndex(undefined);
@@ -18,7 +18,7 @@ var Gallery = function (_a) {
         else {
             setIndex(index);
         }
-    }, []);
+    };
     return (react_1.default.createElement("div", { className: classes.gallery, id: 'gallery' },
         react_1.default.createElement("div", { className: classes.title },
             react_1.default.createElement(material_1.Typography, { variant: 'h1', align: 'center', sx: {
@@ -32,6 +32,6 @@ var Gallery = function (_a) {
                     marginBottom: { xs: '5px', sm: '20px' },
                     display: { xl: 'none' },
                 }, variant: 'middle' })),
-        galleryItemData_1.default.map(function (item, index) { return (react_1.default.createElement("div", { id: item.img, className: "".concat(classes.panel, "\n\t\t\t\t\t\t\t").concat(photoIndex === index && classes.active), style: { backgroundImage: "url(".concat(item.img, ")") }, onClick: function (e) { return handleClick(e, index); }, key: item.img })); })));
+        galleryItemData_1.default.map(function (item, index) { return (react_1.default.createElement("div", { id: item.img, className: "".concat(classes.panel, " ").concat(photoIndex === index && classes.active), style: { backgroundImage: "url(".concat(item.img, ")") }, onClick: function (e) { return handleClick(e, index); }, key: item.img })); })));
 };
 exports.default = (0, styles_1.withStyles)(GalleryStyles_1.default)(Gallery);
