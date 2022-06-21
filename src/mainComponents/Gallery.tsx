@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { withStyles } from '@mui/styles';
 import { Typography } from '@mui/material';
 import { Divider } from '@mui/material';
@@ -11,17 +11,17 @@ const Gallery: React.FC<GalleryProps> = ({ classes }: GalleryProps) => {
 	const [photoIndex, setIndex] = useState<number | undefined>();
 	const [toggleActive, setToggleActive] = useState(false);
 
-	const handleClick = useCallback(
-		(e: React.MouseEvent<Element, MouseEvent>, index: number | undefined) => {
-			if ((e.target as Element).className.includes('active')) {
-				setToggleActive(!toggleActive);
-				setIndex(undefined);
-			} else {
-				setIndex(index);
-			}
-		},
-		[]
-	);
+	const handleClick = (
+		e: React.MouseEvent<Element, MouseEvent>,
+		index: number | undefined
+	) => {
+		if ((e.target as Element).className.includes('active')) {
+			setToggleActive(!toggleActive);
+			setIndex(undefined);
+		} else {
+			setIndex(index);
+		}
+	};
 
 	return (
 		<div className={classes.gallery} id='gallery'>
@@ -50,8 +50,9 @@ const Gallery: React.FC<GalleryProps> = ({ classes }: GalleryProps) => {
 			{galleryItemData.map((item, index) => (
 				<div
 					id={item.img}
-					className={`${classes.panel}
-							${photoIndex === index && classes.active}`}
+					className={`${classes.panel} ${
+						photoIndex === index && classes.active
+					}`}
 					style={{ backgroundImage: `url(${item.img})` }}
 					onClick={(e) => handleClick(e, index)}
 					key={item.img}
